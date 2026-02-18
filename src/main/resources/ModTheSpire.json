@@ -1,0 +1,10 @@
+{
+  "modid": "HenryTGZJMod",
+  "name": "亨利Mod",
+  "author_list": ["YiAn"],
+  "description": "将斯卡利茨的亨利加入到尖塔中。",
+  "version": "0.0.1",
+  "sts_version": "12-18-2022",
+  "mts_version": "3.23.2",
+  "dependencies": ["basemod","stslib"]
+}

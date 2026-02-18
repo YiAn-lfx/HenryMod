@@ -1,0 +1,232 @@
+{
+  "HenryTGZJMod:Strike": {
+    "NAME": "打击",
+    "DESCRIPTION": "造成 !D! 点伤害。",
+    "UPGRADE_DESCRIPTION": "造成 !D! 点伤害。"
+  },
+  "HenryTGZJMod:Thrust": {
+    "NAME": "刺击",
+    "DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 给予 !M! 层 易伤 和 !M! 层 虚弱 。",
+    "UPGRADE_DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 给予 !M! 层 易伤 和 !M! 层 虚弱 。"
+  },
+  "HenryTGZJMod:LowerLeftStrike": {
+    "NAME": "左上挑斩",
+    "DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 额外造成一次伤害。",
+    "UPGRADE_DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 额外造成一次伤害。"
+  },
+  "HenryTGZJMod:LowerRightStrike": {
+    "NAME": "右上挑斩",
+    "DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 抽 !M! 张牌。",
+    "UPGRADE_DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 抽 !M! 张牌。"
+  },
+  "HenryTGZJMod:Backstab": {
+    "NAME": "背后捅刀",
+    "DESCRIPTION": " henrytgzjmod:隐蔽 ： NL 造成 !D! 点伤害。从目标随机 henrytgzjmod:偷取 不超过 !M! 点的 力量 。 NL 消耗 。",
+    "UPGRADE_DESCRIPTION": " henrytgzjmod:隐蔽 ： NL 造成 !D! 点伤害。从目标随机 henrytgzjmod:偷取 不超过 !M! 点的 力量 。 NL 消耗 。"
+  },
+  "HenryTGZJMod:KneeStrike": {
+    "NAME": "破膝打击",
+    "DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 给予目标 henrytgzjmod:踉跄 。",
+    "UPGRADE_DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 给予目标 henrytgzjmod:踉跄 。"
+  },
+  "HenryTGZJMod:Riposte": {
+    "NAME": "转守为攻",
+    "DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 本回合你每打出过一张技能牌，造成 !D! 点伤害。",
+    "UPGRADE_DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 本回合你每打出过一张技能牌，造成 !D! 点伤害。",
+    "EXTENDED_DESCRIPTION": [
+      " NL （你本回合打出过",
+      " 张攻击牌。）",
+      " 张攻击牌。）"
+    ]
+  },
+  "HenryTGZJMod:MasterStrike": {
+    "NAME": "大师之击",
+    "DESCRIPTION": "结束你的回合。 NL 本回合 *受到伤害 时，如果你的 henrytgzjmod:架势 层数与受到伤害 *个位数 相等， *抵消 伤害并使敌人 *失去 等同于伤害的 *生命 ，对目标施加等同于 henrytgzjmod:架势 层数的 henrytgzjmod:创伤 。 NL 消耗 。",
+    "UPGRADE_DESCRIPTION": "结束你的回合。 NL 本回合 *受到伤害 时，如果你的 henrytgzjmod:架势 层数与受到伤害 *个位数 相等， *抵消 伤害并使敌人 *失去 等同于伤害的 *生命 ，对目标施加等同于 henrytgzjmod:架势 层数的 henrytgzjmod:创伤 。"
+  },
+  "HenryTGZJMod:ZornOrt": {
+    "NAME": "怒击",
+    "DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 造成 !D! 点伤害。",
+    "UPGRADE_DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 造成 !D! 点伤害。"
+  },
+  "HenryTGZJMod:FioreHalbschwerten": {
+    "NAME": "菲奥雷半剑式",
+    "DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 获得 !B! 点格挡 和 !M! 点临时生命并造成 !D! 点伤害。",
+    "UPGRADE_DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 获得 !B! 点格挡 和 !M! 点临时生命并造成 !D! 点伤害。"
+  },
+  "HenryTGZJMod:Kurzhaw": {
+    "NAME": "短击",
+    "DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 造成 !D! 点伤害3次。 NL 抽 !M! 张牌 NL 获得 [E] 。",
+    "UPGRADE_DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 造成 !D! 点伤害3次。 NL 抽 !M! 张牌 NL 获得 [E]  [E] 。"
+  },
+  "HenryTGZJMod:Rossen": {
+    "NAME": "罗森式",
+    "DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 造成 !D! 点伤害。 NL 施加 !M! 层 henrytgzjmod:出血 。",
+    "UPGRADE_DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 造成 !D! 点伤害。 NL 施加 !M! 层 henrytgzjmod:出血 。"
+  },
+  "HenryTGZJMod:Mittelhaw": {
+    "NAME": "横劈",
+    "DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 造成 !D! 点伤害。 NL 施加 !M! 层 易伤 。",
+    "UPGRADE_DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 造成 !D! 点伤害。 NL 施加 !M! 层 易伤 。"
+  },
+
+
+
+  "HenryTGZJMod:Defend": {
+    "NAME": "防御",
+    "DESCRIPTION": "获得 !B! 点格挡。",
+    "UPGRADE_DESCRIPTION": "获得 !B! 点格挡。"
+  },
+  "HenryTGZJMod:OnGuard": {
+    "NAME": "预备",
+    "DESCRIPTION": "获得 !B! 点格挡。 NL henrytgzjmod:专注 ： NL 获得1层 henrytgzjmod:架势 。",
+    "UPGRADE_DESCRIPTION": "获得 !B! 点格挡。 NL henrytgzjmod:专注 ： NL 获得1层 henrytgzjmod:架势 。"
+  },
+  "HenryTGZJMod:Stealth": {
+    "NAME": "潜行",
+    "DESCRIPTION": "获得3点 临时敏捷 。 NL 进入 henrytgzjmod:隐蔽 。",
+    "UPGRADE_DESCRIPTION": "获得3点 临时敏捷 。 NL 进入 henrytgzjmod:隐蔽 。"
+  },
+  "HenryTGZJMod:Defensive": {
+    "NAME": "守势",
+    "DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 获得 !M! 层 多重护甲 NL 消耗 。",
+    "UPGRADE_DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 获得 !M! 层 多重护甲 NL 消耗 。"
+  },
+  "HenryTGZJMod:Feint": {
+    "NAME": "佯攻",
+    "DESCRIPTION": " henrytgzjmod:专注 ： NL 本回合你打出的下一张攻击牌可以无视目标的格挡。 NL 抽 !M! 张牌。",
+    "UPGRADE_DESCRIPTION": " henrytgzjmod:专注 ： NL 本回合你打出的下一张攻击牌可以无视目标的格挡。 NL 抽 !M! 张牌。"
+  },
+  "HenryTGZJMod:Bellow": {
+    "NAME": "怒吼",
+    "DESCRIPTION": "获得 !M! 层 henrytgzjmod:架势 。 NL 获得 !M! 点临时 力量 。",
+    "UPGRADE_DESCRIPTION": "获得 !M! 层 henrytgzjmod:架势 。 NL 获得 !M! 点临时 力量 。"
+  },
+  "HenryTGZJMod:Disengage": {
+    "NAME": "转攻为守",
+    "DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 本回合你每打出过一张攻击牌，获得 !B! 点格挡。",
+    "UPGRADE_DESCRIPTION": " henrytgzjmod:连击 !STANCE_COST! ： NL 本回合你每打出过一张攻击牌，获得 !B! 点格挡。",
+    "EXTENDED_DESCRIPTION": [
+      " NL （你本回合打出过",
+      " 张攻击牌。）",
+      " 张攻击牌。）"
+    ]
+  },
+  "HenryTGZJMod:PreemptiveAttack": {
+    "NAME": "先发制人",
+    "DESCRIPTION": "从抽牌堆中选择2张牌放入你的手牌。 NL 消耗 。",
+    "UPGRADE_DESCRIPTION": " 固有 。 NL 从抽牌堆中选择2张牌放入你的手牌。 NL 消耗 。"
+  },
+  "HenryTGZJMod:Simplify": {
+    "NAME": "化繁为简",
+    "DESCRIPTION": " henrytgzjmod:专注 ： NL 随机消耗手牌中的3张牌。",
+    "UPGRADE_DESCRIPTION": " henrytgzjmod:专注 ： NL 消耗手牌中的3张牌。"
+  },
+  "HenryTGZJMod:PettyTheft": {
+    "NAME": "小偷小摸",
+    "DESCRIPTION": " henrytgzjmod:隐蔽 ： NL henrytgzjmod:偷取 随机数量不超过 !M! 的金币。",
+    "UPGRADE_DESCRIPTION": " henrytgzjmod:隐蔽 ： NL henrytgzjmod:偷取 随机数量不超过 !M! 的金币。"
+  },
+  "HenryTGZJMod:Disassemble": {
+    "NAME": "拆解",
+    "DESCRIPTION": " henrytgzjmod:隐蔽 ： NL henrytgzjmod:偷取 目标所有的 格挡 值。 NL 消耗 。",
+    "UPGRADE_DESCRIPTION": " henrytgzjmod:隐蔽 ： NL henrytgzjmod:偷取 目标所有的 格挡 值。"
+  },
+  "HenryTGZJMod:ConcoctPotions": {
+    "NAME": "炼制药水",
+    "DESCRIPTION": "获得一瓶随机 药水 。 NL 消耗 。",
+    "UPGRADE_DESCRIPTION": "获得一瓶随机 药水 。"
+  },
+  "HenryTGZJMod:Persuade": {
+    "NAME": "劝说",
+    "DESCRIPTION": " *随机 使敌人放弃行动一回合。 NL *失败 时会将敌人 *激怒 。 NL 消耗 。",
+    "UPGRADE_DESCRIPTION": " *随机 使敌人放弃行动一回合。 NL *失败 时会将敌人 *激怒 。 NL 消耗 。"
+  },
+
+
+
+  "HenryTGZJMod:Initiative": {
+    "NAME": "占据主动",
+    "DESCRIPTION": " henrytgzjmod:专注 状态下攻击敌人时，额外获得1层 henrytgzjmod:架势 。",
+    "UPGRADE_DESCRIPTION": " henrytgzjmod:专注 状态下攻击敌人时，额外获得1层 henrytgzjmod:架势 。"
+  },
+  "HenryTGZJMod:DictateTheTempo": {
+    "NAME": "掌控节奏",
+    "DESCRIPTION": "你每获得1层 henrytgzjmod:架势 ，抽1张牌。",
+    "UPGRADE_DESCRIPTION": "你每获得1层 henrytgzjmod:架势 ，抽1张牌。"
+  },
+  "HenryTGZJMod:TwoForOne": {
+    "NAME": "买一送一",
+    "DESCRIPTION": "你每次 henrytgzjmod:偷窃 ， 额外重复1次。",
+    "UPGRADE_DESCRIPTION": "你每次 henrytgzjmod:偷窃 ， 额外重复1次。"
+  },
+  "HenryTGZJMod:Tireless": {
+    "NAME": "不知疲倦",
+    "DESCRIPTION": "你每次打出 henrytgzjmod:连击 时 获得 [E] 。",
+    "UPGRADE_DESCRIPTION": "你每次打出 henrytgzjmod:连击 时 获得 [E] [E] 。"
+  },
+  "HenryTGZJMod:FlawlessFlow": {
+    "NAME": "行云流水",
+    "DESCRIPTION": "你每次打出 henrytgzjmod:连击 时不再清除 henrytgzjmod:架势 ，而是减少需求的 henrytgzjmod:架势 层数。",
+    "UPGRADE_DESCRIPTION": "你每次打出 henrytgzjmod:连击 时不再清除 henrytgzjmod:架势 ，而是减少需求的 henrytgzjmod:架势 层数。"
+  },
+  "HenryTGZJMod:FollowThrough": {
+    "NAME": "顺势而为",
+    "DESCRIPTION": "你每打出一次 henrytgzjmod:连击 ，使一张随机手牌在本回合耗能变为0。",
+    "UPGRADE_DESCRIPTION": "你每打出一次 henrytgzjmod:连击 ，使一张随机手牌在本回合耗能变为0。"
+  },
+  "HenryTGZJMod:PillageOnHit": {
+    "NAME": "顺手牵羊",
+    "DESCRIPTION": "你每次造成伤害， henrytgzjmod:偷取 目标随机数量不超过 !M! 的金币。",
+    "UPGRADE_DESCRIPTION": "你每次造成伤害， henrytgzjmod:偷取 目标随机数量不超过 !M! 的金币。"
+  },
+  "HenryTGZJMod:MasterThief": {
+    "NAME": "江洋大盗",
+    "DESCRIPTION": "你每次 henrytgzjmod:偷窃 ，获得 !M! 点 敏捷 。",
+    "UPGRADE_DESCRIPTION": "你每次 henrytgzjmod:偷窃 ，获得 !M! 点 敏捷 。"
+  },
+  "HenryTGZJMod:ActOfIntegrity": {
+    "NAME": "拾金不昧",
+    "DESCRIPTION": "你每次 henrytgzjmod:偷窃 金币时，不再获得金币而是抽 !M! 张牌。",
+    "UPGRADE_DESCRIPTION": "你每次 henrytgzjmod:偷窃 金币时，不再获得金币而是抽 !M! 张牌。"
+  },
+  "HenryTGZJMod:Totentanz": {
+    "NAME": "死亡之舞",
+    "DESCRIPTION": "完全格挡伤害时,获得 !M! 点临时 力量 。",
+    "UPGRADE_DESCRIPTION": "完全格挡伤害时,获得 !M! 点临时 力量 。"
+  },
+  "HenryTGZJMod:BloodOfSiegfried": {
+    "NAME": "西格弗里德之血",
+    "DESCRIPTION": "回合开始时获得 !M! 点格挡。",
+    "UPGRADE_DESCRIPTION": "回合开始时获得 !M! 点格挡。"
+  },
+  "HenryTGZJMod:HeroicVigour": {
+    "NAME": "英雄气概",
+    "DESCRIPTION": "你每有30点最大生命，每回合开始时额外获得 [E] 。",
+    "UPGRADE_DESCRIPTION": "你每有30点最大生命，每回合开始时额外获得 [E] 。"
+  },
+  "HenryTGZJMod:CreepingPhantom": {
+    "NAME": "潜行幻影",
+    "DESCRIPTION": "处于 henrytgzjmod:隐蔽 时，获得 !M! 点 敏捷 ，离开时失去。",
+    "UPGRADE_DESCRIPTION": "处于 henrytgzjmod:隐蔽 时，获得 !M! 点 敏捷 ，离开时失去。"
+  },
+  "HenryTGZJMod:HermesHaste": {
+    "NAME": "赫耳墨斯之速",
+    "DESCRIPTION": "获得 !M! 点敏捷。",
+    "UPGRADE_DESCRIPTION": "获得 !M! 点敏捷。"
+  },
+  "HenryTGZJMod:SecretOfMatter": {
+    "NAME": "物之奥秘",
+    "DESCRIPTION": "炼制 药水 时额外获得 !M! 瓶。",
+    "UPGRADE_DESCRIPTION": "炼制 药水 时额外获得 !M! 瓶。"
+  },
+
+
+
+  "HenryTGZJMod:ComboDamageModifier": {
+    "DESCRIPTION": "造成 %s 点伤害。"
+  },
+  "HenryTGZJMod:ComboBlockModifier": {
+    "DESCRIPTION": "获得 %s 点格挡。"
+  }
+}

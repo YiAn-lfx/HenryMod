@@ -1,0 +1,64 @@
+package HenryTGZJMod.powers;
+
+import HenryTGZJMod.helpers.ModHelper;
+import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.powers.LoseStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
+
+import java.util.Objects;
+
+public class CreepingPhantomPower extends AbstractHenryPower {
+    public static final String POWER_ID = ModHelper.makePath(CreepingPhantomPower.class.getSimpleName()); // 能力的ID
+    private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID); // 能力的本地化字段
+    private static final String NAME = powerStrings.NAME; // 能力的名称
+    private static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS; // 能力的描述
+
+    public CreepingPhantomPower(AbstractCreature owner, int Amount) {
+        this.name = NAME;
+        this.ID = POWER_ID;
+        this.owner = owner;
+        this.type = PowerType.BUFF;
+        this.amount = Amount;
+
+
+        this.initializeImages();
+        // 首次添加能力更新描述
+        this.updateDescription();
+    }
+
+
+    // 能力在更新时如何修改描述
+    public void updateDescription() {
+        if (this.amount == 1) {
+            this.description = String.format(DESCRIPTIONS[0], this.amount);
+        } else {
+            this.description = String.format(DESCRIPTIONS[1], this.amount);
+        }
+    }
+
+
+    //效果
+
+
+    @Override
+    public void onInitialApplication() {
+        if (owner.hasPower("HenryTGZJMod:HiddenPower")) {
+            this.addToBot(new ApplyPowerAction(owner, owner, new DexterityPower(owner, amount)));
+        }
+    }
+
+    @Override
+    public void stackPower(int stackAmount) {
+        if (owner.hasPower("HenryTGZJMod:HiddenPower")) {
+            this.addToBot(new ApplyPowerAction(owner, owner, new DexterityPower(owner, stackAmount)));
+        }
+        this.amount += stackAmount;
+    }
+}
