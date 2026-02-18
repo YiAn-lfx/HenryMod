@@ -1,7 +1,6 @@
 package HenryTGZJMod.ui.campfire;
 
 import HenryTGZJMod.helpers.ModHelper;
-import HenryTGZJMod.vfx.campfire.CampfireRepairEffect;
 import HenryTGZJMod.vfx.campfire.CampfireSharpenEffect;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;

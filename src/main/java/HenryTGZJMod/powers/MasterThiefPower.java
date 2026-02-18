@@ -1,8 +1,6 @@
 package HenryTGZJMod.powers;
 
-import HenryTGZJMod.actions.StealAction;
 import HenryTGZJMod.helpers.ModHelper;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;

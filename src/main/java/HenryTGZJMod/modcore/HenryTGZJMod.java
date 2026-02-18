@@ -1,27 +1,26 @@
 package HenryTGZJMod.modcore;
 
 import HenryTGZJMod.DynamicVariable.StanceCostVariable;
-import HenryTGZJMod.cards.*;
+import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.characters.Henry;
 import HenryTGZJMod.potions.AbstractHenryPotion;
-import HenryTGZJMod.potions.BanePoison;
-import HenryTGZJMod.relics.*;
+import HenryTGZJMod.relics.AbstractHenryRelic;
 import basemod.AutoAdd;
 import basemod.BaseMod;
 import basemod.interfaces.*;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.core.Settings.GameLanguage;
-import com.badlogic.gdx.graphics.Color;
+import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import java.nio.charset.StandardCharsets;
 
-import static HenryTGZJMod.characters.Henry.PlayerColorEnum.H_BROWN;
 import static HenryTGZJMod.characters.Henry.PlayerColorEnum.HENRY_CLASS;
+import static HenryTGZJMod.characters.Henry.PlayerColorEnum.H_BROWN;
 import static com.megacrit.cardcrawl.core.Settings.language;
 
 @SpireInitializer

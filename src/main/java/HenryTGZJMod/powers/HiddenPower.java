@@ -15,7 +15,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.LoseDexterityPower;
 
 public class HiddenPower extends AbstractHenryPower implements HealthBarRenderPower {
     public static final String POWER_ID = ModHelper.makePath(HiddenPower.class.getSimpleName()); // 能力的ID

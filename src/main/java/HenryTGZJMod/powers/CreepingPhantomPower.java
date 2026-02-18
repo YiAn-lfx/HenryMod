@@ -1,18 +1,11 @@
 package HenryTGZJMod.powers;
 
 import HenryTGZJMod.helpers.ModHelper;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.LoseStrengthPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
-
-import java.util.Objects;
 
 public class CreepingPhantomPower extends AbstractHenryPower {
     public static final String POWER_ID = ModHelper.makePath(CreepingPhantomPower.class.getSimpleName()); // 能力的ID

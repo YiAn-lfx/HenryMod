@@ -6,7 +6,6 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
-import com.megacrit.cardcrawl.powers.WeakPower;
 
 public class TraumatizedPower extends AbstractHenryPower {
     public static final String POWER_ID = ModHelper.makePath(TraumatizedPower.class.getSimpleName()); // 能力的ID

@@ -23,19 +23,6 @@ public class WeaponStatus extends AbstractHenryRelic {
         this.counter = 100;
     }
 
-
-//    @Override
-//    public void renderCounter(SpriteBatch sb, boolean inTopPanel) {
-//        if (this.counter >120) {
-//            this.counter = 120;
-//        }
-//        if (this.counter <0) {
-//            this.counter = 0;
-//        }
-//        super.renderCounter(sb, inTopPanel);
-//
-//    }
-
     // 获取遗物描述，但原版游戏只在初始化和获取遗物时调用，故该方法等于初始描述
     public String getUpdatedDescription() {
         return this.DESCRIPTIONS[0];
@@ -45,27 +32,6 @@ public class WeaponStatus extends AbstractHenryRelic {
         return new WeaponStatus();
     }
 
-
-    //
-//    @Override
-//    public int onAttackToChangeDamage(DamageInfo info, int damageAmount) {
-//        int baseDamage = damageAmount;
-//        damageAmount -= (100-counter)/10;
-//        if (info.type == DamageInfo.DamageType.NORMAL && info.owner == AbstractDungeon.player && baseDamage > 0) {
-//            this.counter -= (baseDamage +10)/10;
-//        }
-//        return damageAmount;
-//    }
-//
-//    @Override
-//    public float atDamageModify(float damage, AbstractCard c) {
-//        int baseDamage = (int) damage;
-//        damage -= (float) (100 - counter) /10;
-//        if (baseDamage > 0) {
-//            this.counter -= (baseDamage +10)/10;
-//        }
-//        return damage;
-//    }
 
 
     @Override

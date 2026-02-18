@@ -1,14 +1,10 @@
 package HenryTGZJMod.powers;
 
 import HenryTGZJMod.helpers.ModHelper;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.LoseStrengthPower;
-import com.megacrit.cardcrawl.powers.StrengthPower;
 
 public class HeroicVigourPower extends AbstractHenryPower {
     public static final String POWER_ID = ModHelper.makePath(HeroicVigourPower.class.getSimpleName()); // 能力的ID

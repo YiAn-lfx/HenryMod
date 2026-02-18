@@ -1,11 +1,8 @@
 package HenryTGZJMod.relics;
 
 import HenryTGZJMod.helpers.ModHelper;
-import basemod.abstracts.CustomRelic;
-import basemod.devcommands.relic.RelicRemove;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 

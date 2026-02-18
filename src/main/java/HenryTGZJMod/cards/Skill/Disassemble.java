@@ -1,6 +1,5 @@
 package HenryTGZJMod.cards.Skill;
 
-import HenryTGZJMod.actions.StealAction;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.helpers.ModHelper;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;

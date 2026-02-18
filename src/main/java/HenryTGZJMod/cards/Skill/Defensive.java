@@ -1,7 +1,6 @@
 package HenryTGZJMod.cards.Skill;
 
 import HenryTGZJMod.Modifier.ComboBlockModifier;
-import HenryTGZJMod.Modifier.ComboDamageModifier;
 import HenryTGZJMod.actions.ComboAction;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.helpers.ModHelper;

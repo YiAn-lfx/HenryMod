@@ -2,7 +2,6 @@ package HenryTGZJMod.cards.Attack;
 
 import HenryTGZJMod.actions.ComboAction;
 import HenryTGZJMod.cards.AbstractHenryCard;
-import HenryTGZJMod.helpers.ComboUtil;
 import HenryTGZJMod.helpers.ModHelper;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -13,8 +12,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import static HenryTGZJMod.helpers.ComboUtil.FirstActionType.DAMAGE;
 
 
 public class Riposte extends AbstractHenryCard {

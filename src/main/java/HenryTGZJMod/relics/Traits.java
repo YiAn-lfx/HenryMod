@@ -102,15 +102,6 @@ public class Traits extends AbstractHenryRelic implements BetterOnSmithRelic {
             this.addToBot(new GainBlockAction(AbstractDungeon.player, 20));
             this.flash();
         }
-        //遗物升级
-//        if (m.type == AbstractMonster.EnemyType.ELITE || m.type == AbstractMonster.EnemyType.BOSS) {
-//            if (this.counter < maxCounter) {
-//                this.counter += 1;
-//                System.out.println("升级");
-//                this.flash();
-//                updateDescription();
-//            }
-//        }
     }
 
     @Override
@@ -193,16 +184,6 @@ public class Traits extends AbstractHenryRelic implements BetterOnSmithRelic {
         }
     }
 
-//    @Override
-//    public void renderCounter(SpriteBatch sb, boolean inTopPanel) {
-//        if (this.counter > maxCounter) {
-//            this.counter = maxCounter;
-//        }
-//        if (this.counter < 0) {
-//            this.counter = 0;
-//        }
-//        super.renderCounter(sb, inTopPanel);
-//    }
 }
 
 

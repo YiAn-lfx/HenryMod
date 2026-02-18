@@ -20,17 +20,7 @@ public class PlateArmorStatus extends AbstractHenryRelic {
         super(ID, RELIC_TIER, LANDING_SOUND);
         this.counter = 100;
     }
-//    @Override
-//    public void renderCounter(SpriteBatch sb, boolean inTopPanel) {
-//        if (this.counter >120) {
-//            this.counter = 120;
-//        }
-//        if (this.counter <0) {
-//            this.counter = 0;
-//        }
-//        super.renderCounter(sb, inTopPanel);
-//
-//    }
+
 
     // 获取遗物描述，但原版游戏只在初始化和获取遗物时调用，故该方法等于初始描述
     public String getUpdatedDescription() {
@@ -55,8 +45,6 @@ public class PlateArmorStatus extends AbstractHenryRelic {
     public void addCampfireOption(ArrayList<AbstractCampfireOption> options) {
         options.add(new RepairOption(this.counter < 120));
     }
-
-
 
 }
 

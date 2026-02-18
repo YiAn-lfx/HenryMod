@@ -1,14 +1,11 @@
 package HenryTGZJMod.patch.event;
 
-import com.evacipated.cardcrawl.modthespire.lib.*;
-import com.megacrit.cardcrawl.events.shrines.Nloth;
-
-
-/** @deprecated */
-
-
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.events.shrines.Nloth;
 
 @SpirePatch(clz = Nloth.class, method = "buttonEffect")
 public class NlothPatch {
