@@ -1,21 +1,20 @@
 package HenryTGZJMod.relics;
 
 import HenryTGZJMod.helpers.ModHelper;
-import HenryTGZJMod.ui.campfire.SharpenOption;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.mod.stslib.relics.BetterOnSmithRelic;
-import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.common.ObtainPotionAction;
 import com.megacrit.cardcrawl.actions.unique.ArmamentsAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-import com.megacrit.cardcrawl.ui.campfire.AbstractCampfireOption;
+import com.megacrit.cardcrawl.rooms.MonsterRoomBoss;
+import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 import com.megacrit.cardcrawl.vfx.UpgradeShineEffect;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 
@@ -28,12 +27,11 @@ public class Traits extends AbstractHenryRelic implements BetterOnSmithRelic {
     private static final RelicTier RELIC_TIER = RelicTier.STARTER; // 遗物类型
     private static final LandingSound LANDING_SOUND = LandingSound.FLAT; // 点击音效
 
-    private final int maxCounter;
+    private final int maxCounter = 8;
+
     public Traits() {
         super(ID, RELIC_TIER, LANDING_SOUND);
         this.counter = 0;
-        maxCounter = 8;
-
     }
 
     // 获取遗物描述，但原版游戏只在初始化和获取遗物时调用，故该方法等于初始描述
@@ -67,6 +65,12 @@ public class Traits extends AbstractHenryRelic implements BetterOnSmithRelic {
         this.initializeTips();
     }
 
+    @Override
+    public void setCounter(int counter) {
+        super.setCounter(counter);  // 先设置值
+        updateDescription();        // 然后更新描述
+    }
+
 
 
     public AbstractRelic makeCopy() {
@@ -78,29 +82,60 @@ public class Traits extends AbstractHenryRelic implements BetterOnSmithRelic {
     public void onMonsterDeath(AbstractMonster m) {
         //磨刀石
         if (this.counter >= 1) {
-            AbstractDungeon.player.getRelic("HenryTGZJMod:WeaponStatus").counter += 10;
+            WeaponStatus relicW = (WeaponStatus) AbstractDungeon.player.getRelic("HenryTGZJMod:WeaponStatus");
+            if (relicW != null && this.counter < relicW.maxCounter) {
+                relicW.counter += 10;
+                if (relicW.counter > relicW.maxCounter) {
+                    relicW.counter = relicW.maxCounter;
+                }
+                relicW.flash();
+                this.flash();
+            }
         }
         //拉德季的传承
         if (this.counter >= 4) {
             this.addToBot(new ArmamentsAction(true));
+            this.flash();
         }
         //无畏骑士
         if (this.counter >= 8) {
             this.addToBot(new GainBlockAction(AbstractDungeon.player, 20));
+            this.flash();
         }
         //遗物升级
-        if (m.type == AbstractMonster.EnemyType.ELITE || m.type == AbstractMonster.EnemyType.BOSS) {
-            this.counter += 1;
-            updateDescription();
-        }
+//        if (m.type == AbstractMonster.EnemyType.ELITE || m.type == AbstractMonster.EnemyType.BOSS) {
+//            if (this.counter < maxCounter) {
+//                this.counter += 1;
+//                System.out.println("升级");
+//                this.flash();
+//                updateDescription();
+//            }
+//        }
     }
 
     @Override
     public void onVictory() {
         //就地取材
         if (this.counter >= 3) {
-            AbstractDungeon.player.getRelic("HenryTGZJMod:PlateArmorStatus").counter += 5;
+            PlateArmorStatus relicP = (PlateArmorStatus) AbstractDungeon.player.getRelic("HenryTGZJMod:PlateArmorStatus");
+            if (relicP != null && this.counter < relicP.maxCounter) {
+                relicP.counter += 5;
+                if (relicP.counter > relicP.maxCounter) {
+                    relicP.counter = relicP.maxCounter;
+                }
+                relicP.flash();
+                this.flash();
+            }
         }
+        //遗物升级
+        if (AbstractDungeon.getCurrRoom() instanceof MonsterRoomElite || AbstractDungeon.getCurrRoom() instanceof MonsterRoomBoss) {
+            if (this.counter < maxCounter) {
+                this.counter += 1;
+                this.flash();
+                updateDescription();
+            }
+        }
+
     }
 
     @Override
@@ -108,10 +143,12 @@ public class Traits extends AbstractHenryRelic implements BetterOnSmithRelic {
         //身形矫健
         if (this.counter >= 5) {
             this.addToBot(new GainEnergyAction(1));
+            this.flash();
         }
         //好战分子
         if (this.counter >= 6) {
             this.addToBot(new DrawCardAction(1));
+            this.flash();
         }
     }
 
@@ -120,6 +157,7 @@ public class Traits extends AbstractHenryRelic implements BetterOnSmithRelic {
         //炼金术士
         if (this.counter >= 7) {
             this.addToBot(new ObtainPotionAction(AbstractDungeon.returnRandomPotion(true)));
+            this.flash();
         }
     }
     @Override
@@ -151,21 +189,20 @@ public class Traits extends AbstractHenryRelic implements BetterOnSmithRelic {
                     AbstractDungeon.topLevelEffects.add(new UpgradeShineEffect((float) Settings.WIDTH / 2.0F, (float) Settings.HEIGHT / 2.0F));
                 }
             }
+            this.flash();
         }
     }
 
-    @Override
-    public void renderCounter(SpriteBatch sb, boolean inTopPanel) {
-        if (this.counter > maxCounter) {
-            this.counter = maxCounter;
-        }
-        if (this.counter < 0) {
-            this.counter = 0;
-        }
-        super.renderCounter(sb, inTopPanel);
-    }
-
-
+//    @Override
+//    public void renderCounter(SpriteBatch sb, boolean inTopPanel) {
+//        if (this.counter > maxCounter) {
+//            this.counter = maxCounter;
+//        }
+//        if (this.counter < 0) {
+//            this.counter = 0;
+//        }
+//        super.renderCounter(sb, inTopPanel);
+//    }
 }
 
 
