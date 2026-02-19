@@ -41,14 +41,14 @@ public class Traits extends AbstractHenryRelic implements BetterOnSmithRelic {
 
     private String setDescription() {
 
-        StringBuilder sb = new StringBuilder("#y" + this.DESCRIPTIONS[0]);
+        StringBuilder sb = new StringBuilder(this.DESCRIPTIONS[0]);
 
 
         for (int i = 1; i <= this.counter; i++) {
             sb.append(" NL #g").append(this.DESCRIPTIONS[i]);
         }
         if (this.counter != maxCounter) {
-            sb.append(" NL [#555555]【待解锁】：[]");
+            sb.append(this.DESCRIPTIONS[9]);
         }
         for (int i = this.counter + 1; i <= maxCounter; i++) {
             sb.append(" NL [#555555]").append(this.DESCRIPTIONS[i]).append("[]");
