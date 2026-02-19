@@ -142,6 +142,11 @@
     "DESCRIPTION": " *随机 使敌人放弃行动一回合。 NL *失败 时会将敌人 *激怒 。 NL 消耗 。",
     "UPGRADE_DESCRIPTION": " *随机 使敌人放弃行动一回合。 NL *失败 时会将敌人 *激怒 。 NL 消耗 。"
   },
+  "HenryTGZJMod:Duel": {
+    "NAME": "决斗",
+    "DESCRIPTION": "在 !M! 个回合内使所有生物无法获得增益效果。 NL 消耗。 NL （不影响专注与架势。）",
+    "UPGRADE_DESCRIPTION": "在 !M! 个回合内使所有生物无法获得增益效果。 NL 消耗。 NL （不影响专注与架势。）"
+  },
 
 
 
