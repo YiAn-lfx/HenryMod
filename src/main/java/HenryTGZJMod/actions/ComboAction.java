@@ -1,9 +1,8 @@
 package HenryTGZJMod.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.*;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -12,20 +11,46 @@ import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
 
 public class ComboAction extends AbstractGameAction{
 
+
+    private final int value;
     private final int stanceCost;
     private final AbstractGameAction[] actions;
+    private final FirstActionType firstActionType;
 
-    public ComboAction(AbstractCreature source, AbstractCreature target, int stanceCost, AbstractGameAction... actions) {
+    public enum FirstActionType {
+        DAMAGE,      // 造成伤害
+        BLOCK,       // 获得格挡
+        NONE         // 无动作
+    }
+
+    public ComboAction(AbstractCreature source, AbstractCreature target, FirstActionType firstActionType, int value, int stanceCost, AbstractGameAction... actions) {
         this.source = source;
         this.target = target;
+        this.value = value;
         this.stanceCost = stanceCost;
         this.actions = actions;
+        this.firstActionType = firstActionType;
         //this.actionType = ActionType.POWER; // 设置为POWER类型，因为涉及姿态消耗
+    }
+    public ComboAction(AbstractCreature source, AbstractCreature target, int stanceCost,
+                       AbstractGameAction... actions) {
+        this(source, target, FirstActionType.NONE, 0, stanceCost, actions);
     }
 
 
     @Override
     public void update() {
+        switch (firstActionType) {
+            case DAMAGE:
+                this.addToBot(new DamageAction(target, new DamageInfo(source, value, DamageInfo.DamageType.NORMAL), AttackEffect.SLASH_HORIZONTAL));
+                break;
+            case BLOCK:
+                this.addToBot(new GainBlockAction(target, source, value));
+                break;
+            case NONE:
+                break;
+        }
+
         AbstractPower stancePower = player.getPower("HenryTGZJMod:StancePower");
         AbstractPower tirelessPower = player.getPower("HenryTGZJMod:tirelessPower");
         AbstractPower followThroughPower = player.getPower("HenryTGZJMod:followThroughPower");
@@ -83,5 +108,6 @@ public class ComboAction extends AbstractGameAction{
         }
         this.isDone = true;
     }
+
 }
 

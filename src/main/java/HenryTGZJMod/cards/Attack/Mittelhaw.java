@@ -1,10 +1,8 @@
 package HenryTGZJMod.cards.Attack;
 
-import HenryTGZJMod.Modifier.ComboDamageModifier;
 import HenryTGZJMod.actions.ComboAction;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.helpers.ModHelper;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -28,11 +26,10 @@ public class Mittelhaw extends AbstractHenryCard {
 
     public Mittelhaw() {
         super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
-        this.damage = this.baseDamage = 10;
+        this.damage = this.baseDamage = 6;
         this.magicNumber = this.baseMagicNumber = 2;
         this.stanceCost = this.baseStanceCost = 2;
-        this.secondDamage = this.baseSecondDamage = 6;
-        CardModifierManager.addModifier(this, new ComboDamageModifier(secondDamage));
+        this.secondDamage = this.baseSecondDamage = 10;
     }
 
     @Override
@@ -51,8 +48,8 @@ public class Mittelhaw extends AbstractHenryCard {
 
         this.addToBot(
                 new ComboAction(
-                        p, m, stanceCost,
-                        new DamageAction(m, new DamageInfo(p, damage, DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL),
+                        p, m, ComboAction.FirstActionType.DAMAGE, damage, stanceCost,
+                        new DamageAction(m, new DamageInfo(p, secondDamage, DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL),
                         new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false))
                 )
         );

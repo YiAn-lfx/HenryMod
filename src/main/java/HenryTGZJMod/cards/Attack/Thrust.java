@@ -1,10 +1,8 @@
 package HenryTGZJMod.cards.Attack;
 
-import HenryTGZJMod.Modifier.ComboDamageModifier;
 import HenryTGZJMod.actions.ComboAction;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.helpers.ModHelper;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -28,8 +26,6 @@ public class Thrust extends AbstractHenryCard {
         this.damage = this.baseDamage = 8;
         this.magicNumber = this.baseMagicNumber = 1;
         this.stanceCost = this.baseStanceCost = 1;
-        this.secondDamage = this.baseSecondDamage = 6;
-        CardModifierManager.addModifier(this, new ComboDamageModifier(secondDamage));
     }
 
     @Override
@@ -46,14 +42,9 @@ public class Thrust extends AbstractHenryCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) { //卡牌使用效果
 
-//        ComboUtil.Combo(
-//                p, m, damage, stanceCost, ComboUtil.FirstActionType.DAMAGE,
-//                new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false)),
-//                new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false))
-//        );
         this.addToBot(
                 new ComboAction(
-                        p, m, stanceCost,
+                        p, m, ComboAction.FirstActionType.DAMAGE, damage, stanceCost,
                         new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false)),
                         new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false))
                 )

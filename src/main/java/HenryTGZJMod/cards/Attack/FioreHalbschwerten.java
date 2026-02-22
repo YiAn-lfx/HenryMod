@@ -1,10 +1,8 @@
 package HenryTGZJMod.cards.Attack;
 
-import HenryTGZJMod.Modifier.ComboDamageModifier;
 import HenryTGZJMod.actions.ComboAction;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.helpers.ModHelper;
-import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -28,18 +26,18 @@ public class FioreHalbschwerten extends AbstractHenryCard {
 
     public FioreHalbschwerten() {
         super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
-        this.damage = this.baseDamage = 10;
+        this.damage = this.baseDamage = 6;
         this.block = this.baseBlock = 10;
         this.magicNumber = this.baseMagicNumber  = 10;
         this.stanceCost = this.baseStanceCost = 2;
-        this.secondDamage = this.baseSecondDamage = 6;
-        CardModifierManager.addModifier(this, new ComboDamageModifier(secondDamage));    }
+        this.secondDamage = this.baseSecondDamage = 10;
+    }
 
     @Override
     public void upgrade() { //卡牌升级
         if(!this.upgraded){
             this.upgradeName();
-            this.upgradeDamage(5);
+            this.upgradeSecondDamage(5);
             this.upgradeBlock(5);
             this.upgradeMagicNumber(5);
             this.rawDescription = CARD_STRINGS.UPGRADE_DESCRIPTION; //使用升级后的本地化文本
@@ -51,17 +49,12 @@ public class FioreHalbschwerten extends AbstractHenryCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) { //卡牌使用效果
 
-//        ComboUtil.Combo(
-//                p, m, damage, stanceCost, DAMAGE,
-//                new GainBlockAction(p, p, magicNumber),
-//                new DamageAction(m, new DamageInfo(p, magicNumber, DamageType.NORMAL), AbstractGameAction.AttackEffect.SMASH)
-//        );
         this.addToBot(
                 new ComboAction(
-                        p, m, stanceCost,
+                        p, m, ComboAction.FirstActionType.DAMAGE, damage, stanceCost,
                         new GainBlockAction(p, p, block),
                         new AddTemporaryHPAction(p, p, magicNumber),
-                        new DamageAction(m, new DamageInfo(p, damage, DamageType.NORMAL), AbstractGameAction.AttackEffect.SMASH)
+                        new DamageAction(m, new DamageInfo(p, secondDamage, DamageType.NORMAL), AbstractGameAction.AttackEffect.SMASH)
                 )
         );
     }

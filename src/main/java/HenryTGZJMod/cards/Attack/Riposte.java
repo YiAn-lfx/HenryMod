@@ -41,33 +41,7 @@ public class Riposte extends AbstractHenryCard {
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) { //卡牌使用效果
-//
-//        ComboUtil.Combo(
-//                p, m, damage, stanceCost, DAMAGE,
-//                new AbstractGameAction() {
-//                    @Override
-//                    public void update() {
-//                        // 计算本回合技能牌数量
-//                        // 1. 计算本回合打出的纪念牌数量
-//                        int skillCount = 0;
-//                        for (AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn) {
-//                            if (c.type == CardType.SKILL) {
-//                                skillCount++;
-//                            }
-//                        }
-//
-//                        // 2. 根据技能牌数量造成伤害
-//                        if (skillCount > 0) {
-//                            for (int i = 1; i <= skillCount; i++) {
-//                                this.addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-//                            }
-//
-//                        }
-//                        this.isDone = true;
-//                    }
-//                }
-//
-//        );
+
         this.addToBot(
                 new ComboAction(
                         p, m, stanceCost,

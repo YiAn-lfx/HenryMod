@@ -1,10 +1,8 @@
 package HenryTGZJMod.cards.Attack;
 
-import HenryTGZJMod.Modifier.ComboDamageModifier;
 import HenryTGZJMod.actions.ComboAction;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.helpers.ModHelper;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
@@ -28,11 +26,10 @@ public class Kurzhaw extends AbstractHenryCard {
 
     public Kurzhaw() {
         super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
-        this.damage = this.baseDamage = 2;
+        this.damage = this.baseDamage = 6;
         this.magicNumber = this.baseMagicNumber = 1;
         this.stanceCost = this.baseStanceCost = 1;
-        this.secondDamage = this.baseSecondDamage = 6;
-        CardModifierManager.addModifier(this, new ComboDamageModifier(secondDamage));
+        this.secondDamage = this.baseSecondDamage = 2;
     }
 
     @Override
@@ -51,10 +48,10 @@ public class Kurzhaw extends AbstractHenryCard {
 
         this.addToBot(
                 new ComboAction(
-                        p, m, stanceCost,
-                        new DamageAction(m, new DamageInfo(p, damage, DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL),
-                        new DamageAction(m, new DamageInfo(p, damage, DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL),
-                        new DamageAction(m, new DamageInfo(p, damage, DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL),
+                        p, m, ComboAction.FirstActionType.DAMAGE, damage, stanceCost,
+                        new DamageAction(m, new DamageInfo(p, secondDamage, DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL),
+                        new DamageAction(m, new DamageInfo(p, secondDamage, DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL),
+                        new DamageAction(m, new DamageInfo(p, secondDamage, DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_DIAGONAL),
                         new GainEnergyAction(magicNumber),
                         new DrawCardAction(magicNumber)
                 )

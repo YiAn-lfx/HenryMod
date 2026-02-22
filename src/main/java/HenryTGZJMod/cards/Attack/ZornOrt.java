@@ -1,10 +1,8 @@
 package HenryTGZJMod.cards.Attack;
 
-import HenryTGZJMod.Modifier.ComboDamageModifier;
 import HenryTGZJMod.actions.ComboAction;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.helpers.ModHelper;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -26,17 +24,17 @@ public class ZornOrt extends AbstractHenryCard {
 
     public ZornOrt() {
         super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
-        this.damage = this.baseDamage = 20;
+        this.damage = this.baseDamage = 6;
         this.magicNumber = this.baseMagicNumber = 6;
         this.stanceCost = this.baseStanceCost = 2;
-        this.secondDamage = this.baseSecondDamage = 6;
-        CardModifierManager.addModifier(this, new ComboDamageModifier(secondDamage));    }
+        this.secondDamage = this.baseSecondDamage = 20;
+    }
 
     @Override
     public void upgrade() { //卡牌升级
         if(!this.upgraded){
             this.upgradeName();
-            this.upgradeDamage(10);
+            this.upgradeSecondDamage(10);
             this.rawDescription = CARD_STRINGS.UPGRADE_DESCRIPTION; //使用升级后的本地化文本
             this.initializeDescription();
         }
@@ -46,14 +44,11 @@ public class ZornOrt extends AbstractHenryCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) { //卡牌使用效果
 
-//        ComboUtil.Combo(
-//                p, m, damage, stanceCost, DAMAGE,
-//                new DamageAction(m, new DamageInfo(p, magicNumber, DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY)
-//        );
+
         this.addToBot(
                 new ComboAction(
-                        p, m, stanceCost,
-                        new DamageAction(m, new DamageInfo(p, damage, DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY)                )
+                        p, m, ComboAction.FirstActionType.DAMAGE, damage, stanceCost,
+                        new DamageAction(m, new DamageInfo(p, secondDamage, DamageType.NORMAL), AbstractGameAction.AttackEffect.BLUNT_HEAVY)                )
         );
     }
 }

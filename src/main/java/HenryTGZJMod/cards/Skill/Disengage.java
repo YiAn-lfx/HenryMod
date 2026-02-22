@@ -40,51 +40,7 @@ public class Disengage extends AbstractHenryCard {
     }
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) { //卡牌使用效果
-//        AbstractPower powerS = p.getPower("HenryTGZJMod:StancePower");
-//        if (powerS != null && powerS.amount >= stanceCost) {
-//            this.addToBot(
-//                    new RemoveSpecificPowerAction(
-//                            p, p, powerS.ID
-//                    )
-//            );
-//            // 计算本回合攻击牌数量
-//                // 1. 计算本回合打出的攻击牌数量
-//            int attackCount = 0;
-//            for (AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn) {
-//                if (c.type == CardType.ATTACK) {
-//                    attackCount++;
-//                }
-//            }
-//
-//            // 2. 根据攻击牌数量获得格挡
-//            if (attackCount > 0) {
-//                int totalBlock = attackCount * block;
-//                addToBot(new GainBlockAction(p, p, totalBlock));
-//            }
-//        }
-//        ComboUtil.Combo(
-//                p, m, damage, stanceCost, ComboUtil.FirstActionType.NONE,
-//                new AbstractGameAction() {
-//                    @Override
-//                    public void update() {
-//                        // 计算本回合攻击牌数量
-//                        // 1. 计算本回合打出的攻击牌数量
-//                        int attackCount = 0;
-//                        for (AbstractCard c : AbstractDungeon.actionManager.cardsPlayedThisTurn) {
-//                            if (c.type == CardType.ATTACK) {
-//                                attackCount++;
-//                            }
-//                        }
-//
-//                        // 2. 根据攻击牌数量获得格挡
-//                        if (attackCount > 0) {
-//                            int totalBlock = attackCount * block;
-//                            addToBot(new GainBlockAction(p, p, totalBlock));
-//                        }
-//                        this.isDone = true;
-//                    }
-//                }
-//        );
+
         this.addToBot(
                 new ComboAction(
                         p, m, stanceCost,

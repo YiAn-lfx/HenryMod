@@ -1,11 +1,9 @@
 package HenryTGZJMod.cards.Attack;
 
-import HenryTGZJMod.Modifier.ComboDamageModifier;
 import HenryTGZJMod.actions.ComboAction;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.helpers.ModHelper;
 import HenryTGZJMod.powers.BleedingPower;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -28,18 +26,17 @@ public class Rossen extends AbstractHenryCard {
 
     public Rossen() {
         super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
-        this.damage = this.baseDamage = 10;
+        this.damage = this.baseDamage = 6;
         this.magicNumber = this.baseMagicNumber = 10;
         this.stanceCost = this.baseStanceCost = 3;
-        this.secondDamage = this.baseSecondDamage = 6;
-        CardModifierManager.addModifier(this, new ComboDamageModifier(secondDamage));
+        this.secondDamage = this.baseSecondDamage = 10;
     }
 
     @Override
     public void upgrade() { //卡牌升级
         if(!this.upgraded){
             this.upgradeName();
-            this.upgradeDamage(5);
+            this.upgradeSecondDamage(5);
             this.upgradeMagicNumber(5);
             this.rawDescription = CARD_STRINGS.UPGRADE_DESCRIPTION; //使用升级后的本地化文本
             this.initializeDescription();
@@ -52,8 +49,8 @@ public class Rossen extends AbstractHenryCard {
 
         this.addToBot(
                 new ComboAction(
-                        p, m, stanceCost,
-                        new DamageAction(m, new DamageInfo(p, damage, DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL),
+                        p, m, ComboAction.FirstActionType.DAMAGE, damage, stanceCost,
+                        new DamageAction(m, new DamageInfo(p, secondDamage, DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_VERTICAL),
                         new ApplyPowerAction(m, p, new BleedingPower(m, magicNumber))
                 )
         );

@@ -1,11 +1,9 @@
 package HenryTGZJMod.cards.Attack;
 
-import HenryTGZJMod.Modifier.ComboDamageModifier;
 import HenryTGZJMod.actions.ComboAction;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.helpers.ModHelper;
 import HenryTGZJMod.powers.StaggerPower;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -27,8 +25,9 @@ public class KneeStrike extends AbstractHenryCard {
         this.tags.add(CardTags.STRIKE);
         this.exhaust = false;
         this.isEthereal = false;
-        this.secondDamage = this.baseSecondDamage = 6;
-        CardModifierManager.addModifier(this, new ComboDamageModifier(secondDamage));    }
+        this.damage = this.baseDamage = 6;
+
+    }
 
     @Override
     public void upgrade() { //卡牌升级
@@ -44,13 +43,11 @@ public class KneeStrike extends AbstractHenryCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) { //卡牌使用效果
 
-//        ComboUtil.Combo(
-//                p, m, damage, stanceCost, DAMAGE,
-//                new ApplyPowerAction(m, p, new StaggerPower(m))
-//        );
+
+
         this.addToBot(
                 new ComboAction(
-                        p, m, stanceCost,
+                        p, m, ComboAction.FirstActionType.DAMAGE, damage, stanceCost,
                         new ApplyPowerAction(m, p, new StaggerPower(m))
                 )
         );

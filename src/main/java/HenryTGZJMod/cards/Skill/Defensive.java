@@ -1,10 +1,8 @@
 package HenryTGZJMod.cards.Skill;
 
-import HenryTGZJMod.Modifier.ComboBlockModifier;
 import HenryTGZJMod.actions.ComboAction;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.helpers.ModHelper;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -26,8 +24,7 @@ public class Defensive extends AbstractHenryCard {
         this.magicNumber = baseMagicNumber = 5;
         this.stanceCost = baseStanceCost = 2;
         this.exhaust = true;
-        this.secondBlock = this.baseSecondBlock = 5;
-        CardModifierManager.addModifier(this, new ComboBlockModifier(secondBlock));
+        this.block = this.baseBlock = 5;
     }
 
     @Override
@@ -44,13 +41,10 @@ public class Defensive extends AbstractHenryCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) { //卡牌使用效果
 
-//        ComboUtil.Combo(
-//                p, m, block, stanceCost, ComboUtil.FirstActionType.BLOCK,
-//                new ApplyPowerAction(p, p, new PlatedArmorPower(p, magicNumber))
-//        );
+
         this.addToBot(
                 new ComboAction(
-                        p, m, stanceCost,
+                        p, m, ComboAction.FirstActionType.BLOCK, block, stanceCost,
                         new ApplyPowerAction(p, p, new PlatedArmorPower(p, magicNumber))
                 )
         );
