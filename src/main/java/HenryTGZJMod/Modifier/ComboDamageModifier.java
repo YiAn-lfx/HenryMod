@@ -2,6 +2,7 @@ package HenryTGZJMod.Modifier;
 
 import HenryTGZJMod.helpers.ModHelper;
 import basemod.abstracts.AbstractCardModifier;
+import com.evacipated.cardcrawl.mod.stslib.extraeffects.ExtraEffectModifier;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
@@ -11,7 +12,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
-
+/** @deprecated */
 public class ComboDamageModifier extends ExtraEffectModifier {
 
     private static final String ID = ModHelper.makePath(ComboDamageModifier.class.getSimpleName());
@@ -23,14 +24,16 @@ public class ComboDamageModifier extends ExtraEffectModifier {
         // 设置优先级，负数表示在卡牌描述开头显示
         this.priority = -1;
     }
+    private void onVictory() {
 
+    }
 
 
     @Override
     public void doExtraEffects(AbstractCard card, AbstractPlayer p, AbstractCreature m, UseCardAction useAction) {
         // 每次触发造成额外伤害
         addToBot(
-                new DamageAction(m, new DamageInfo(p, proxy.getValueFor(type), DamageInfo.DamageType.NORMAL),
+                new DamageAction(m, new DamageInfo(p, value(card), DamageInfo.DamageType.NORMAL),
                 AbstractGameAction.AttackEffect.SLASH_HORIZONTAL
                 )
         );
@@ -46,7 +49,8 @@ public class ComboDamageModifier extends ExtraEffectModifier {
     @Override
     public String getEffectId(AbstractCard card) {
         // 唯一的标识符，用于识别相同类型的修改器
-        return "combo_base_damage";
+        //return "combo_base_damage_" + card.uuid;
+        return ID;
     }
 
     @Override

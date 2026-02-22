@@ -2,6 +2,7 @@ package HenryTGZJMod.Modifier;
 
 import HenryTGZJMod.helpers.ModHelper;
 import basemod.abstracts.AbstractCardModifier;
+import com.evacipated.cardcrawl.mod.stslib.extraeffects.ExtraEffectModifier;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -9,7 +10,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
-
+/** @deprecated */
 public class ComboBlockModifier extends ExtraEffectModifier {
 
     private static final String ID = ModHelper.makePath(ComboBlockModifier.class.getSimpleName());
@@ -28,7 +29,7 @@ public class ComboBlockModifier extends ExtraEffectModifier {
     public void doExtraEffects(AbstractCard card, AbstractPlayer p, AbstractCreature m, UseCardAction useAction) {
         // 每次触发造成额外伤害
         addToBot(
-                new GainBlockAction(p, proxy.getValueFor(type)
+                new GainBlockAction(p, value(card)
                 )
         );
     }
