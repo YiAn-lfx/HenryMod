@@ -1,5 +1,6 @@
 package HenryTGZJMod.modcore;
 
+import HenryTGZJMod.DynamicVariable.SecondDamageVariable;
 import HenryTGZJMod.DynamicVariable.StanceCostVariable;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.characters.Henry;
@@ -69,6 +70,7 @@ public class HenryTGZJMod implements EditCardsSubscriber, EditStringsSubscriber,
     @Override
     public void receiveEditCards() {
         BaseMod.addDynamicVariable(new StanceCostVariable());
+        BaseMod.addDynamicVariable(new SecondDamageVariable());
         new AutoAdd("HenryTGZJMod")
                 .packageFilter(AbstractHenryCard.class)
                 .setDefaultSeen(true)
