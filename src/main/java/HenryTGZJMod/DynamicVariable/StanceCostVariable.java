@@ -8,42 +8,26 @@ import com.megacrit.cardcrawl.core.Settings;
 
 public class StanceCostVariable extends DynamicVariable {
 
-    // 存储原始基础值，用于判断增减
-    private int lastBaseValue = 0;
-
     @Override
     public String key() {
-        return "STANCE_COST";
+        return "STANCE_COST";  // 在描述中用 !STANCE_COST! 显示
     }
 
     @Override
     public boolean isModified(AbstractCard card) {
-        if (card != null) {
-            AbstractHenryCard stanceCard = (AbstractHenryCard) card;
-            // 获取当前值和基础值
-            int currentValue = stanceCard.getStanceCost();
-            int baseValue = stanceCard.getBaseStanceCost();
-
-            // 记录基础值变化
-            if (baseValue != lastBaseValue) {
-                lastBaseValue = baseValue;
-            }
-
-            // 返回true表示数值被修改（增减都会返回true）
-            return currentValue != baseValue;
+        if (card instanceof AbstractHenryCard) {
+            // 注意：这里使用 showStanceCostAsModified 用于升级预览
+            // 使用 isStanceCostModified 用于游戏内效果
+            return ((AbstractHenryCard) card).isStanceCostModified
+                    || ((AbstractHenryCard) card).showStanceCostAsModified;
         }
         return false;
     }
 
     @Override
-    public void setIsModified(AbstractCard card, boolean v) {
-    }
-
-    @Override
     public int value(AbstractCard card) {
         if (card instanceof AbstractHenryCard) {
-            AbstractHenryCard stanceCard = (AbstractHenryCard) card;
-            return stanceCard.getStanceCost();
+            return ((AbstractHenryCard) card).stanceCost;
         }
         return 0;
     }
@@ -51,39 +35,39 @@ public class StanceCostVariable extends DynamicVariable {
     @Override
     public int baseValue(AbstractCard card) {
         if (card instanceof AbstractHenryCard) {
-            AbstractHenryCard stanceCard = (AbstractHenryCard) card;
-            return stanceCard.getBaseStanceCost();
+            return ((AbstractHenryCard) card).baseStanceCost;
         }
         return 0;
     }
 
     @Override
     public boolean upgraded(AbstractCard card) {
-        // 卡牌升级不影响这个变量
-        return true;
+        if (card instanceof AbstractHenryCard) {
+            return ((AbstractHenryCard) card).upgradedStanceCost;
+        }
+        return false;
     }
 
     @Override
-    public Color getNormalColor() {
-        // 未修改时的颜色 - 使用游戏设置的白色
-        return Settings.CREAM_COLOR;
-    }
-
-    @Override
-    public Color getIncreasedValueColor() {
-        // 数值增加时的颜色 - 使用游戏内置的红色
-        return Settings.RED_TEXT_COLOR;
-    }
-
-    @Override
-    public Color getDecreasedValueColor() {
-        // 数值减少时的颜色 - 使用游戏内置的绿色
-        return Settings.GREEN_TEXT_COLOR;
+    public void setIsModified(AbstractCard card, boolean v) {
+        if (card instanceof AbstractHenryCard) {
+            // 这个字段专门用于升级预览
+            ((AbstractHenryCard) card).showStanceCostAsModified = v;
+        }
     }
 
     @Override
     public Color getUpgradedColor() {
-        // 卡牌升级时的颜色 - 使用游戏内置的绿色
-        return Settings.GREEN_TEXT_COLOR;
+        return Settings.GREEN_TEXT_COLOR;  // 升级显示绿色
+    }
+
+    @Override
+    public Color getIncreasedValueColor() {
+        return Settings.RED_TEXT_COLOR;    // 增加显示红色
+    }
+
+    @Override
+    public Color getDecreasedValueColor() {
+        return Settings.GREEN_TEXT_COLOR;  // 减少显示绿色
     }
 }

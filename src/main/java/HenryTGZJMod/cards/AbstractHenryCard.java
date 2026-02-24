@@ -3,6 +3,7 @@ package HenryTGZJMod.cards;
 import HenryTGZJMod.helpers.ModHelper;
 import basemod.abstracts.CustomCard;
 import com.badlogic.gdx.math.MathUtils;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -15,8 +16,7 @@ import static HenryTGZJMod.characters.Henry.PlayerColorEnum.H_BROWN;
 
 public abstract class AbstractHenryCard extends CustomCard {
 
-    public int stanceCost;          // 当前架势消耗
-    public int baseStanceCost;      // 基础架势消耗
+
     public int secondDamage;          // 第二伤害数值
     public int baseSecondDamage;      // 基础第二伤害数值
     public int secondBlock;          // 第二格挡数值
@@ -27,6 +27,12 @@ public abstract class AbstractHenryCard extends CustomCard {
     public int[] multiSecondDamage;
     public boolean isSecondBlockModified;
     public boolean upgradedSecondBlock;
+    // 姿态费用相关字段
+    public int baseStanceCost;           // 基础值
+    public int stanceCost;                // 当前值
+    public boolean upgradedStanceCost;    // 是否升级过
+    public boolean isStanceCostModified;  // 是否被外部效果修改
+    public boolean showStanceCostAsModified;  // 用于升级预览的显示标志
 
 
     // useTmpArt表示是否使用测试卡图，当你卡图不够用时可以使用
@@ -44,6 +50,11 @@ public abstract class AbstractHenryCard extends CustomCard {
         this.secondBlock = -1;
         this.isSecondBlockModified = false;
         this.upgradedSecondBlock = false;
+        this.baseStanceCost = 0;
+        this.stanceCost = 0;
+        this.upgradedStanceCost = false;
+        this.isStanceCostModified = false;
+        this.showStanceCostAsModified = false;
     }
 
     // 如果按这个方法实现，在cards文件夹下分别放test_attack.png、test_power.png、test_skill.png即可
@@ -96,59 +107,45 @@ public abstract class AbstractHenryCard extends CustomCard {
         return String.format(ModHelper.MakeAssetPath("img/cards/%s/%s.png"), type, name.replace(ModHelper.makePath(""), ""));
     }
 
-    protected void updateStanceCost() {
-        this.stanceCost = this.baseStanceCost;
 
-        // 检查玩家是否有"笨拙"效果
-        if (AbstractDungeon.player != null) {
-            AbstractPower clumsyPower = AbstractDungeon.player.getPower("HenryTGZJMod:ClumsyPower");
-            if (clumsyPower != null) {
-                this.stanceCost += clumsyPower.amount;
-            }
 
-            // 可以在这里添加其他影响架势消耗的效果
-            // AbstractPower otherPower = AbstractDungeon.player.getPower("OtherPower");
-            // if (otherPower != null) {
-            //     this.stanceCost += otherPower.amount;
-            // }
+    /**
+     * 升级姿态费用
+     */
+    public void upgradeStanceCost(int by) {
+        this.baseStanceCost += by;
+        this.stanceCost += by;
+        this.upgradedStanceCost = true;
+    }
+
+    /**
+     * 计算姿态费用 - 应用外部影响
+     */
+    public void calculateStanceCost() {
+        this.isStanceCostModified = false;
+
+        if (AbstractDungeon.player == null) return;
+
+        float tmp = this.baseStanceCost;
+
+        // 应用笨拙效果
+        AbstractPower clumsy = AbstractDungeon.player.getPower("HenryTGZJMod:ClumsyPower");
+        if (clumsy != null) {
+            tmp += clumsy.amount;
+            this.isStanceCostModified = true;
         }
 
-        // 确保架势消耗不会低于0
-        if (this.stanceCost < 0) {
-            this.stanceCost = 0;
-        }
+
+        // 确保非负
+        if (tmp < 0) tmp = 0;
+
+        this.stanceCost = Math.round(tmp);
     }
 
-    // 重写 applyPowers 方法
-    @Override
-    public void applyPowers() {
-        super.applyPowers();
-        updateStanceCost(); // 自动更新架势消耗
-        applyPowersToSecondDamage();
-        applyPowersToSecondBlock();
-    }
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        // 计算第一个伤害
-        super.calculateCardDamage(mo);
-        // 计算第二个伤害
-        this.calculateSecondDamage(mo);
-    }
 
-    // Getter方法
-    public int getStanceCost() {
-        return stanceCost;
-    }
 
-    public int getBaseStanceCost() {
-        return baseStanceCost;
-    }
 
-    // 升级方法（类似upgradeMagicNumber）
-    public void upgradeStanceCost(int amount) {
-        this.baseStanceCost += amount;
-        this.stanceCost = this.baseStanceCost;
-    }
+
 
     public void applyPowersToSecondDamage() {
         // 单目标模式
@@ -393,22 +390,30 @@ public abstract class AbstractHenryCard extends CustomCard {
     }
 
     /**
-     * 针对特定状态的格挡计算
-     * 有时候需要知道当前玩家的状态来计算格挡（比如有无人工制品等）
-     */
-    public void calculateSecondBlock() {
-        // 基本逻辑与applyPowersToSecondBlock相同
-        // 但可以根据需要添加额外检查
-        this.applyPowersToSecondBlock();
-    }
-
-    /**
      * 升级第二个格挡
      */
     protected void upgradeSecondBlock(int amount) {
         this.baseSecondBlock += amount;
         this.upgradedSecondBlock = true;
     }
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        // 计算第一个伤害
+        super.calculateCardDamage(mo);
+        // 计算第二个伤害
+        this.calculateSecondDamage(mo);
+
+    }
+
+    // 重写 applyPowers 方法
+    @Override
+    public void applyPowers() {
+        super.applyPowers();
+        this.applyPowersToSecondDamage();
+        this.applyPowersToSecondBlock();
+        this.calculateStanceCost();
+    }
+
 
     // 重置属性
     @Override
@@ -421,6 +426,9 @@ public abstract class AbstractHenryCard extends CustomCard {
         }
         this.secondBlock = this.baseSecondBlock;
         this.isSecondBlockModified = false;
+        this.stanceCost = this.baseStanceCost;
+        this.isStanceCostModified = false;
+
     }
 
     // 显示升级
@@ -436,5 +444,21 @@ public abstract class AbstractHenryCard extends CustomCard {
             this.secondBlock = this.baseSecondBlock;
             this.isSecondBlockModified = true;
         }
+    }
+
+    @Override
+    public AbstractCard makeStatEquivalentCopy() {
+        AbstractCard card = super.makeStatEquivalentCopy();
+        if (card instanceof AbstractHenryCard) {
+            AbstractHenryCard henryCard = (AbstractHenryCard) card;
+            // 复制所有姿态费用相关字段
+            henryCard.stanceCost = this.stanceCost;
+            henryCard.baseStanceCost = this.baseStanceCost;
+            henryCard.isStanceCostModified = this.isStanceCostModified;
+            henryCard.upgradedStanceCost = this.upgradedStanceCost;
+            henryCard.showStanceCostAsModified = this.showStanceCostAsModified;
+
+        }
+        return card;
     }
 }
