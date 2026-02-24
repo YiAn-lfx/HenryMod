@@ -27,7 +27,6 @@ public abstract class AbstractHenryCard extends CustomCard {
     public int[] multiSecondDamage;
     public boolean isSecondBlockModified;
     public boolean upgradedSecondBlock;
-    // 姿态费用相关字段
     public int baseStanceCost;           // 基础值
     public int stanceCost;                // 当前值
     public boolean upgradedStanceCost;    // 是否升级过
@@ -41,20 +40,7 @@ public abstract class AbstractHenryCard extends CustomCard {
         super(ID, strings.NAME, useTmpArt ? getTmpImgPath(TYPE) : getImgPath(TYPE, ID), COST, strings.DESCRIPTION, TYPE,
                 H_BROWN, RARITY, TARGET);
 
-        this.baseSecondDamage = -1;
-        this.secondDamage = -1;
-        this.isSecondDamageModified = false;
-        this.upgradedSecondDamage = false;
-        this.isMultiSecondDamage = false;
-        this.baseSecondBlock = -1;
-        this.secondBlock = -1;
-        this.isSecondBlockModified = false;
-        this.upgradedSecondBlock = false;
-        this.baseStanceCost = 0;
-        this.stanceCost = 0;
-        this.upgradedStanceCost = false;
-        this.isStanceCostModified = false;
-        this.showStanceCostAsModified = false;
+
     }
 
     // 如果按这个方法实现，在cards文件夹下分别放test_attack.png、test_power.png、test_skill.png即可
@@ -152,7 +138,7 @@ public abstract class AbstractHenryCard extends CustomCard {
         if (!this.isMultiSecondDamage) {
             float tmp = (float)this.baseSecondDamage;
 
-            // 遗器加成
+            // 遗物加成
             for (AbstractRelic r : AbstractDungeon.player.relics) {
                 tmp = r.atDamageModify(tmp, this);
                 if (this.baseSecondDamage != (int)tmp) {
@@ -160,7 +146,7 @@ public abstract class AbstractHenryCard extends CustomCard {
                 }
             }
 
-            // 力量加成（注意：可能需要使用不同的力量类型）
+            // 能力加成
             for (AbstractPower p : AbstractDungeon.player.powers) {
                 tmp = p.atDamageGive(tmp, this.damageTypeForTurn, this);
                 if (this.baseSecondDamage != (int)tmp) {
@@ -199,7 +185,7 @@ public abstract class AbstractHenryCard extends CustomCard {
                 tmp[i] = (float)this.baseSecondDamage;
             }
 
-            // 遗器加成
+            // 遗物加成
             for(int i = 0; i < tmp.length; ++i) {
                 for (AbstractRelic r : AbstractDungeon.player.relics) {
                     tmp[i] = r.atDamageModify(tmp[i], this);
@@ -209,7 +195,7 @@ public abstract class AbstractHenryCard extends CustomCard {
                 }
             }
 
-            // 力量加成
+            // 能力加成
             for(int i = 0; i < tmp.length; ++i) {
                 for (AbstractPower p : AbstractDungeon.player.powers) {
                     tmp[i] = p.atDamageGive(tmp[i], this.damageTypeForTurn, this);
@@ -242,12 +228,12 @@ public abstract class AbstractHenryCard extends CustomCard {
         if (!this.isMultiSecondDamage && mo != null) {
             float tmp = (float)this.baseSecondDamage;
 
-            // 遗器加成
+            // 遗物加成
             for (AbstractRelic r : AbstractDungeon.player.relics) {
                 tmp = r.atDamageModify(tmp, this);
             }
 
-            // 玩家力量加成
+            // 玩家能力加成
             for (AbstractPower p : AbstractDungeon.player.powers) {
                 tmp = p.atDamageGive(tmp, this.damageTypeForTurn, this);
             }
@@ -286,7 +272,7 @@ public abstract class AbstractHenryCard extends CustomCard {
                 tmp[i] = (float)this.baseSecondDamage;
             }
 
-            // 遗器和玩家力量加成
+            // 遗物和玩家能力加成
             for(int i = 0; i < tmp.length; ++i) {
                 for (AbstractRelic r : AbstractDungeon.player.relics) {
                     tmp[i] = r.atDamageModify(tmp[i], this);

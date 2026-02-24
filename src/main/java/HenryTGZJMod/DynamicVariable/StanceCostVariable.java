@@ -10,14 +10,12 @@ public class StanceCostVariable extends DynamicVariable {
 
     @Override
     public String key() {
-        return "STANCE_COST";  // 在描述中用 !STANCE_COST! 显示
+        return "STANCE_COST";
     }
 
     @Override
     public boolean isModified(AbstractCard card) {
         if (card instanceof AbstractHenryCard) {
-            // 注意：这里使用 showStanceCostAsModified 用于升级预览
-            // 使用 isStanceCostModified 用于游戏内效果
             return ((AbstractHenryCard) card).isStanceCostModified
                     || ((AbstractHenryCard) card).showStanceCostAsModified;
         }
@@ -58,16 +56,16 @@ public class StanceCostVariable extends DynamicVariable {
 
     @Override
     public Color getUpgradedColor() {
-        return Settings.GREEN_TEXT_COLOR;  // 升级显示绿色
+        return Settings.GREEN_TEXT_COLOR;
     }
 
     @Override
     public Color getIncreasedValueColor() {
-        return Settings.RED_TEXT_COLOR;    // 增加显示红色
+        return Settings.RED_TEXT_COLOR;
     }
 
     @Override
     public Color getDecreasedValueColor() {
-        return Settings.GREEN_TEXT_COLOR;  // 减少显示绿色
+        return Settings.GREEN_TEXT_COLOR;
     }
 }
