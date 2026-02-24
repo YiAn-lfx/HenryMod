@@ -1,5 +1,6 @@
 package HenryTGZJMod.modcore;
 
+import HenryTGZJMod.DynamicVariable.SecondBlockVariable;
 import HenryTGZJMod.DynamicVariable.SecondDamageVariable;
 import HenryTGZJMod.DynamicVariable.StanceCostVariable;
 import HenryTGZJMod.cards.AbstractHenryCard;
@@ -71,6 +72,7 @@ public class HenryTGZJMod implements EditCardsSubscriber, EditStringsSubscriber,
     public void receiveEditCards() {
         BaseMod.addDynamicVariable(new StanceCostVariable());
         BaseMod.addDynamicVariable(new SecondDamageVariable());
+        BaseMod.addDynamicVariable(new SecondBlockVariable());
         new AutoAdd("HenryTGZJMod")
                 .packageFilter(AbstractHenryCard.class)
                 .setDefaultSeen(true)
@@ -84,7 +86,6 @@ public class HenryTGZJMod implements EditCardsSubscriber, EditStringsSubscriber,
                 .any(AbstractHenryPotion.class, (info, potion) -> {
                     BaseMod.addPotion(potion.getClass(), null, null, null, potion.ID, HENRY_CLASS);
                 });
-//        BaseMod.addPotion(BanePoison.class, null, null, null, BanePoison.ID, HENRY_CLASS);
     }
 
     // 向basemod注册人物
@@ -96,11 +97,6 @@ public class HenryTGZJMod implements EditCardsSubscriber, EditStringsSubscriber,
     // 向basemod注册遗物
     @Override
     public void receiveEditRelics() {
-        //BaseMod.addRelic(new RKSword(), RelicType.SHARED); // RelicType表示是所有角色都能拿到的遗物，还是一个角色的独有遗物
-//        BaseMod.addRelicToCustomPool(new RKSword(), H_BROWN);
-//        BaseMod.addRelicToCustomPool(new HSword(), H_BROWN);
-//        BaseMod.addRelicToCustomPool(new PlateArmorStatus(), H_BROWN);
-//        BaseMod.addRelicToCustomPool(new WeaponStatus(), H_BROWN);
         new AutoAdd("HenryTGZJMod")
                 .packageFilter(AbstractHenryRelic.class)
                 .any(AbstractHenryRelic.class, (info, relic) -> {
