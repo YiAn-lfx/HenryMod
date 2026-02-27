@@ -1,9 +1,10 @@
 {
-  "HenryTGZJMod:BanePoisonPotion": {
+  "HenryTGZJMod:BanePoison": {
     "NAME": "“祸根”毒药",
     "DESCRIPTIONS": [
-      "使目标在 #b",
-      " 回合内失去 #b110 点生命。"
+      "选择手牌中的一张攻击牌，赋予额外攻击效果：“额外施加持续 #b",
+      " 回合的 #y祸根 。”",
+      "赋予额外效果"
     ]
   }
   }

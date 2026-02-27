@@ -224,5 +224,11 @@
     "NAME": "物之奥秘",
     "DESCRIPTION": "炼制 药水 时额外获得 !M! 瓶。",
     "UPGRADE_DESCRIPTION": "炼制 药水 时额外获得 !M! 瓶。"
+  },
+
+
+
+  "HenryTGZJMod:BaneCardModifier": {
+    "DESCRIPTION": "额外施加 持续 %s 回合的 henrytgzjmod:祸根 。"
   }
 }

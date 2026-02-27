@@ -38,12 +38,12 @@ public class BanePoisonPower extends AbstractHenryPower  {
         if (110/stackAmount > this.amount2) {
             this.amount += stackAmount;
             this.amount2 = 110 / stackAmount;
-            this.updateDescription();
-        } else {
+        } else if(110/stackAmount == this.amount2){
             this.amount = stackAmount;
             this.amount2 = 110 / stackAmount;
         }
         AbstractPower power = this.owner.getPower(WeakPower.POWER_ID);
+        /* bug */
         this.addToBot(new ApplyPowerAction(this.owner, this.owner, new WeakPower(this.owner, Math.max(0,this.amount - power.amount), false)));
     }
 

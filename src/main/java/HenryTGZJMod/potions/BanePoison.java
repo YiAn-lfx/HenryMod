@@ -1,8 +1,10 @@
 package HenryTGZJMod.potions;
 
+import HenryTGZJMod.Modifier.BaneCardModifier;
 import HenryTGZJMod.helpers.ModHelper;
-import HenryTGZJMod.powers.BanePoisonPower;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -12,6 +14,7 @@ import com.megacrit.cardcrawl.potions.AbstractPotion;
 
 import static HenryTGZJMod.modcore.HenryTGZJMod.MY_COLOR;
 
+
 public class BanePoison extends AbstractHenryPotion {
     public static final String ID = ModHelper.makePath(BanePoison.class.getSimpleName());
     private static final PotionStrings POTION_STRINGS = CardCrawlGame.languagePack.getPotionString(ID);
@@ -20,7 +23,7 @@ public class BanePoison extends AbstractHenryPotion {
         super(POTION_STRINGS.NAME, ID, PotionRarity.RARE, PotionSize.SPHERE, PotionColor.SMOKE);
         this.labOutlineColor = MY_COLOR;
         this.isThrown = true;
-        this.targetRequired = true;
+        this.targetRequired = false;
 
     }
     @Override
@@ -33,7 +36,16 @@ public class BanePoison extends AbstractHenryPotion {
 
     @Override
     public void use(AbstractCreature target) {
-        this.addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new BanePoisonPower(target, potency)));
+//        this.addToBot(new ApplyPowerAction(target, AbstractDungeon.player, new BanePoisonPower(target, potency)));
+
+        addToBot(new SelectCardsInHandAction(POTION_STRINGS.DESCRIPTIONS[2],
+                (card) -> card.type == AbstractCard.CardType.ATTACK,
+                (cards) -> {
+                    AbstractCard selected = cards.get(0);
+                    CardModifierManager.addModifier(selected, new BaneCardModifier(potency));
+                }
+        ));
+
 
     }
 
