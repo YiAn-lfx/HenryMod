@@ -16,9 +16,6 @@ public class StancePower extends AbstractHenryPower {
     private static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS; // 能力的描述
 
 
-    private int stanceSavedAmount;
-    private int stanceStackAmount;
-
     public StancePower(AbstractCreature owner, int Amount) {
         this.name = NAME;
         this.ID = POWER_ID;
@@ -35,13 +32,8 @@ public class StancePower extends AbstractHenryPower {
         this.updateDescription();
     }
     public void stackPower(int stackAmount){
-//        System.out.println("stackPower");
-//        System.out.println("层数" + this.amount);
-//        System.out.println("增加" + stackAmount);
-        //stanceStackAmount = stackAmount;
         AbstractPower powerD = owner.getPower("HenryTGZJMod:DictateTheTempoPower");
         if (powerD != null) {
-            //System.out.println(stanceStackAmount);
             this.flash();
             this.addToBot(new DrawCardAction((powerD.amount * stackAmount)));
         }
@@ -53,7 +45,6 @@ public class StancePower extends AbstractHenryPower {
         if (this.amount >= 10) {
             this.amount = 10;
         }
-
     }
 
     // 能力在更新时如何修改描述
@@ -71,20 +62,7 @@ public class StancePower extends AbstractHenryPower {
         }
     }
 
-//    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
-//        System.out.println("onApplyPower");
-//        System.out.println( power.ID);
-//        if (power.ID.equals(this.ID)) {
-//            AbstractPower powerD = owner.getPower("HenryTGZJMod:DictateTheTempoPower");
-//            if (powerD != null) {
-//                System.out.println(stanceStackAmount);
-//                this.addToBot(new DrawCardAction((powerD.amount * Math.max(stanceStackAmount, 1))));
-//            }
-//        }
-//    }
-
     public void atStartOfTurn(){
-        //this.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
         this.addToTop(new ReducePowerAction(this.owner, this.owner, this.ID, (this.amount+1)/2));
     }
 
