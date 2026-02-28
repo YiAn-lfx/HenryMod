@@ -1,16 +1,15 @@
 package HenryTGZJMod.cards.Skill;
 
+import HenryTGZJMod.actions.FocusAction;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.helpers.ModHelper;
 import HenryTGZJMod.powers.FeintPower;
-import HenryTGZJMod.powers.FocusPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
 
 public class Feint extends AbstractHenryCard {
@@ -24,7 +23,6 @@ public class Feint extends AbstractHenryCard {
     public Feint() {
         super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
         this.magicNumber = baseMagicNumber = 2;
-        //this.cardsToPreview = new KneeStrike();
     }
 
     @Override
@@ -40,22 +38,11 @@ public class Feint extends AbstractHenryCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) { //卡牌使用效果
-        AbstractPower powerS = p.getPower("HenryTGZJMod:FocusPower");
-        if (powerS != null) {
-//            this.addToBot(
-//                    new MakeTempCardInHandAction(new KneeStrike(), 1)
-//            );
-            this.addToBot(
-                    new ApplyPowerAction(
-                            p, p, new FeintPower(p, 1)
-                    )
-            );
-            this.addToBot(
-                    //new GainEnergyAction(2)
-                    new DrawCardAction(magicNumber)
-            );
-        } else {
-            this.addToBot(new ApplyPowerAction(p, p, new FocusPower(p)));
-        }
+        this.addToBot(
+                new FocusAction(
+                        new ApplyPowerAction(p, p, new FeintPower(p, 1)),
+                        new DrawCardAction(magicNumber)
+                )
+        );
     }
 }

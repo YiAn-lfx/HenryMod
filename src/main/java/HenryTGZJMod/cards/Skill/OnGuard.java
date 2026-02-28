@@ -1,8 +1,8 @@
 package HenryTGZJMod.cards.Skill;
 
+import HenryTGZJMod.actions.FocusAction;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.helpers.ModHelper;
-import HenryTGZJMod.powers.FocusPower;
 import HenryTGZJMod.powers.StancePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -40,20 +40,13 @@ public class OnGuard extends AbstractHenryCard {
     public void use(AbstractPlayer p, AbstractMonster m) { //卡牌使用效果
         this.addToBot(
                 new GainBlockAction(
-                        p, p, this.block)
+                        p, p, this.block
+                )
         );
-        if (!p.hasPower("HenryTGZJMod:FocusPower")) {
-            addToBot(
-                    new ApplyPowerAction(
-                            p, p, new FocusPower(p)
-                    )
-            );
-        }else {
-            addToBot(
-                    new ApplyPowerAction(
-                            p, p, new StancePower(p,1)
-                    )
-            );
-        }
+        this.addToBot(
+                new FocusAction(
+                        new ApplyPowerAction(p, p, new StancePower(p,1))
+                )
+        );
     }
 }

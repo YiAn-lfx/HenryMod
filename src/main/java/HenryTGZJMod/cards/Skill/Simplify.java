@@ -1,9 +1,8 @@
 package HenryTGZJMod.cards.Skill;
 
+import HenryTGZJMod.actions.FocusAction;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.helpers.ModHelper;
-import HenryTGZJMod.powers.FocusPower;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -39,14 +38,10 @@ public class Simplify extends AbstractHenryCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) { //卡牌使用效果
-        if (p.hasPower("HenryTGZJMod:FocusPower")) {
-            if (this.upgraded) {
-                this.addToBot(new ExhaustAction(3, false, true, true));
-            } else {
-                this.addToBot(new ExhaustAction(3, true, false, false));
-            }
-        } else {
-            this.addToBot(new ApplyPowerAction(p, p, new FocusPower(p)));
-        }
+        this.addToBot(
+            new FocusAction(
+                new ExhaustAction(3, !upgraded, upgraded, upgraded)
+            )
+        );
     }
 }

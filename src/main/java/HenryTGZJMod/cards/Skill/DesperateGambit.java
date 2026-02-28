@@ -1,9 +1,9 @@
 package HenryTGZJMod.cards.Skill;
 
+import HenryTGZJMod.actions.FocusAction;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.helpers.ModHelper;
 import HenryTGZJMod.powers.DesperateGambitPower;
-import HenryTGZJMod.powers.FocusPower;
 import HenryTGZJMod.powers.StancePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -18,7 +18,7 @@ public class DesperateGambit extends AbstractHenryCard {
     private static final CardStrings CARD_STRINGS = CardCrawlGame.languagePack.getCardStrings(ID); // 从游戏系统读取本地化资源
     private static final int COST = 0;
     private static final CardType TYPE = CardType.SKILL; //类型
-    private static final CardRarity RARITY = CardRarity.BASIC; //稀有度
+    private static final CardRarity RARITY = CardRarity.UNCOMMON; //稀有度
     private static final CardTarget TARGET = CardTarget.SELF; //指向类型
 
     public DesperateGambit() {
@@ -39,21 +39,12 @@ public class DesperateGambit extends AbstractHenryCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) { //卡牌使用效果
-
-        if (!p.hasPower("HenryTGZJMod:FocusPower")) {
-            addToBot(
-                    new ApplyPowerAction(
-                            p, p, new FocusPower(p)
-                    )
-            );
-        }else {
-            AbstractPower power = p.getPower("HenryTGZJMod:StancePower");
-            addToBot(
-                    new ApplyPowerAction(
-                            p, p, new StancePower(p,power.amount)
-                    )
-            );
-            addToBot(new ApplyPowerAction(p, p, new DesperateGambitPower(p)));
-        }
+        AbstractPower power = p.getPower("HenryTGZJMod:StancePower");
+        this.addToBot(
+                new FocusAction(
+                    new ApplyPowerAction(p, p, new StancePower(p,power.amount)),
+                    new ApplyPowerAction(p, p, new DesperateGambitPower(p))
+                )
+        );
     }
 }
