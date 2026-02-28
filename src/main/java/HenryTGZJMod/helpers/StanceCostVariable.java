@@ -1,4 +1,4 @@
-package HenryTGZJMod.DynamicVariable;
+package HenryTGZJMod.helpers;
 
 import HenryTGZJMod.cards.AbstractHenryCard;
 import basemod.abstracts.DynamicVariable;

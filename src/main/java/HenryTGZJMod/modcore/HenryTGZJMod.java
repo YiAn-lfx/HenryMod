@@ -1,10 +1,10 @@
 package HenryTGZJMod.modcore;
 
-import HenryTGZJMod.DynamicVariable.SecondBlockVariable;
-import HenryTGZJMod.DynamicVariable.SecondDamageVariable;
-import HenryTGZJMod.DynamicVariable.StanceCostVariable;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.characters.Henry;
+import HenryTGZJMod.helpers.SecondBlockVariable;
+import HenryTGZJMod.helpers.SecondDamageVariable;
+import HenryTGZJMod.helpers.StanceCostVariable;
 import HenryTGZJMod.potions.AbstractHenryPotion;
 import HenryTGZJMod.relics.AbstractHenryRelic;
 import basemod.AutoAdd;

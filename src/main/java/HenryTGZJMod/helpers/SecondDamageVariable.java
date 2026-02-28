@@ -1,20 +1,20 @@
-package HenryTGZJMod.DynamicVariable;
+package HenryTGZJMod.helpers;
 
 import HenryTGZJMod.cards.AbstractHenryCard;
 import basemod.abstracts.DynamicVariable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 
 
-public class SecondBlockVariable extends DynamicVariable {
+public class SecondDamageVariable extends DynamicVariable {
     @Override
     public String key() {
-        return "B2";
+        return "D2";
     }
 
     @Override
     public boolean isModified(AbstractCard card) {
         if (card instanceof AbstractHenryCard) {
-            return ((AbstractHenryCard) card).isSecondBlockModified;
+            return ((AbstractHenryCard) card).isSecondDamageModified;
         }
         return false;
     }
@@ -26,7 +26,7 @@ public class SecondBlockVariable extends DynamicVariable {
     @Override
     public int value(AbstractCard card) {
         if (card instanceof AbstractHenryCard) {
-            return ((AbstractHenryCard) card).secondBlock;
+            return ((AbstractHenryCard) card).secondDamage;
         }
         return 0;
     }
@@ -36,7 +36,7 @@ public class SecondBlockVariable extends DynamicVariable {
     @Override
     public int baseValue(AbstractCard card) {
         if (card instanceof AbstractHenryCard) {
-            return ((AbstractHenryCard) card).baseSecondBlock;
+            return ((AbstractHenryCard) card).baseSecondDamage;
         }
         return 0;
     }
@@ -44,7 +44,7 @@ public class SecondBlockVariable extends DynamicVariable {
     @Override
     public boolean upgraded(AbstractCard card) {
         if (card instanceof AbstractHenryCard) {
-            return ((AbstractHenryCard) card).upgradedSecondBlock;
+            return ((AbstractHenryCard) card).upgradedSecondDamage;
         }
         return false;
     }
