@@ -6,5 +6,12 @@
       " 回合的 #y祸根 。”",
       "赋予额外效果"
     ]
+  },
+  "HenryTGZJMod:SaviourSchnapps": {
+    "NAME": "救世干酒",
+    "DESCRIPTIONS": [
+      "本场战斗中，当你要被杀死时，免死并回复到当前生命值。 NL 获得 #b",
+      " 层 #y力量 和 #y敏捷 。"
+    ]
   }
   }
