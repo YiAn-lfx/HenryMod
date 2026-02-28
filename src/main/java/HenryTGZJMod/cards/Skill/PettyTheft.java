@@ -1,5 +1,6 @@
 package HenryTGZJMod.cards.Skill;
 
+import HenryTGZJMod.actions.HiddenAction;
 import HenryTGZJMod.actions.StealAction;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.helpers.ModHelper;
@@ -39,8 +40,10 @@ public class PettyTheft extends AbstractHenryCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) { //卡牌使用效果
-        if (p.hasPower("HenryTGZJMod:HiddenPower")) {
-            this.addToBot(StealAction.createGold(m, p, 1, magicNumber));
-        }
+        this.addToBot(
+                new HiddenAction(
+                        StealAction.createGold(m, p, 1, magicNumber)
+                )
+        );
     }
 }

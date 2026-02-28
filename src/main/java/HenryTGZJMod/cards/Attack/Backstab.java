@@ -1,5 +1,6 @@
 package HenryTGZJMod.cards.Attack;
 
+import HenryTGZJMod.actions.HiddenAction;
 import HenryTGZJMod.actions.StealAction;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.helpers.ModHelper;
@@ -44,26 +45,11 @@ public class Backstab extends AbstractHenryCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) { //卡牌使用效果
-        if (p.hasPower("HenryTGZJMod:HiddenPower")) {
-            this.addToBot(
-                    new DamageAction(
-                            m,
-                            new DamageInfo(
-                                    p,
-                                    damage,
-                                    DamageType.NORMAL
-                            ),
-                            AbstractGameAction.AttackEffect.SLASH_HORIZONTAL
-                    )
-            );
-//            AbstractPower powerT = p.getPower("HenryTGZJMod:TwoForOnePower");
-//            int loopCount = 1;
-//            if (powerT != null) {
-//                loopCount += powerT.amount; // 根据能力层数增加循环次数
-//            }
-//            for (int i=0; i<loopCount; i++){
-                addToBot(StealAction.createSpecificBuff(m, p, StrengthPower.POWER_ID, 1, magicNumber));
-//            }
-        }
+        this.addToBot(
+                new HiddenAction(
+                        new DamageAction(m, new DamageInfo(p, damage, DamageType.NORMAL), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL),
+                        StealAction.createSpecificBuff(m, p, StrengthPower.POWER_ID, 1, magicNumber)
+                )
+        );
     }
 }

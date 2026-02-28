@@ -1,5 +1,6 @@
 package HenryTGZJMod.cards.Skill;
 
+import HenryTGZJMod.actions.HiddenAction;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.helpers.ModHelper;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -40,9 +41,11 @@ public class Disassemble extends AbstractHenryCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) { //卡牌使用效果
-        if (p.hasPower("HenryTGZJMod:HiddenPower")) {
-            this.addToBot(new GainBlockAction(p, m.currentBlock));
-            this.addToBot(new RemoveAllBlockAction(m, p));
-        }
+        this.addToBot(
+                new HiddenAction(
+                        new GainBlockAction(p, m.currentBlock),
+                        new RemoveAllBlockAction(m, p)
+                )
+        );
     }
 }
