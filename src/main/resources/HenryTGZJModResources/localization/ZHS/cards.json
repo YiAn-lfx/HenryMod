@@ -152,6 +152,11 @@
     "DESCRIPTION": " henrytgzjmod:专注 ： NL 使你的 henrytgzjmod:架势 翻倍。 NL 本回合你无法再获得 henrytgzjmod:架势 。 NL 消耗 。",
     "UPGRADE_DESCRIPTION": " henrytgzjmod:专注 ： NL 使你的 henrytgzjmod:架势 翻倍。 NL 本回合你无法再获得 henrytgzjmod:架势 。"
   },
+  "HenryTGZJMod:BreakAndRebuild": {
+    "NAME": "破而后立",
+    "DESCRIPTION": "将你的所有初始打击和防御牌 消耗 。 NL 每 消耗 一张打击，你获得1层 虚弱 。 NL 每 消耗 一张防御，你获得1层 脆弱 。 NL 消耗 。",
+    "UPGRADE_DESCRIPTION": "固有 。 NL 将你的所有初始打击和防御牌 消耗 。 NL 每 消耗 一张打击，你获得1层 虚弱 。 NL 每 消耗 一张防御，你获得1层 脆弱 。 NL 消耗 。"
+  },
 
 
 
