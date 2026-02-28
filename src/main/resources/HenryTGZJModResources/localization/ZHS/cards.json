@@ -230,6 +230,11 @@
     "DESCRIPTION": "炼制 药水 时额外获得 !M! 瓶。",
     "UPGRADE_DESCRIPTION": "炼制 药水 时额外获得 !M! 瓶。"
   },
+  "HenryTGZJMod:EmbraceTheAbyss": {
+    "NAME": "拥抱深渊",
+    "DESCRIPTION": "你的生命值锁定为1。 NL 每扣除10点生命获得5点 力量 。 NL 被攻击时转为减少最大生命值。 NL 每回合获得 [E] [E] 。 NL 攻击时在弃牌堆中加入一张 *灼烧 。 NL 战斗结束时回复失去的生命。",
+    "UPGRADE_DESCRIPTION": "你的生命值锁定为1。 NL 每扣除10点生命获得5点 力量 。  NL 被攻击时转为减少最大生命值。 NL 每回合获得 [E] [E] 。 NL 攻击时在弃牌堆中加入一张 *灼烧 。 NL 战斗结束时回复失去的生命。"
+  },
 
 
 
