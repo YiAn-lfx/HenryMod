@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import java.util.ArrayList;
 
 public class FreeHandCardAction extends AbstractGameAction {
-    private final int amount; // 免费牌的数量
+    private final int amount;
 
     public FreeHandCardAction() {
         this(1);

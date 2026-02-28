@@ -30,7 +30,7 @@ public class ComboAction extends AbstractGameAction{
         this.stanceCost = stanceCost;
         this.actions = actions;
         this.firstActionType = firstActionType;
-        //this.actionType = ActionType.POWER; // 设置为POWER类型，因为涉及姿态消耗
+        //this.actionType = ActionType.POWER;
     }
     public ComboAction(AbstractCreature source, AbstractCreature target, int stanceCost,
                        AbstractGameAction... actions) {
