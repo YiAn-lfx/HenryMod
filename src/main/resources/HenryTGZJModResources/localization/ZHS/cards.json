@@ -147,6 +147,11 @@
     "DESCRIPTION": "在 !M! 个回合内使所有生物无法获得增益效果。 NL 消耗。 NL （不影响专注与架势。）",
     "UPGRADE_DESCRIPTION": "在 !M! 个回合内使所有生物无法获得增益效果。 NL 消耗。 NL （不影响专注与架势。）"
   },
+  "HenryTGZJMod:DesperateGambit": {
+    "NAME": "孤注一掷",
+    "DESCRIPTION": " henrytgzjmod:专注 ： NL 使你的 henrytgzjmod:架势 翻倍。 NL 本回合你无法再获得 henrytgzjmod:架势 。 NL 消耗 。",
+    "UPGRADE_DESCRIPTION": " henrytgzjmod:专注 ： NL 使你的 henrytgzjmod:架势 翻倍。 NL 本回合你无法再获得 henrytgzjmod:架势 。"
+  },
 
 
 
