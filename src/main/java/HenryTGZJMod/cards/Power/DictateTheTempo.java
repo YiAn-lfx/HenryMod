@@ -36,24 +36,6 @@ public class DictateTheTempo extends AbstractHenryCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) { //卡牌使用效果
-//        AbstractPower powerS = p.getPower("HenryTGZJMod:StancePower");
-//        if (powerS != null && powerS.amount >= stanceCost) {
-//            this.addToBot(
-//                    new RemoveSpecificPowerAction(
-//                            p, p, powerS.ID
-//                    )
-//
-//            );
-//            this.addToBot(
-//                    new ApplyPowerAction(
-//                            p, p, new DictateTheTempoPower(p, 1)
-//                    )
-//            );
-//        }
-//        ComboUtil.Combo(
-//                p, m, damage, stanceCost, ComboUtil.FirstActionType.NONE,
-//                new ApplyPowerAction(p, p, new DictateTheTempoPower(p, 1))
-//        );
         this.addToBot(new ApplyPowerAction(p, p, new DictateTheTempoPower(p, 1)));
     }
 }
