@@ -1,4 +1,4 @@
-package HenryTGZJMod.cards.Skill;
+package HenryTGZJMod.cards.Power;
 
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.helpers.ModHelper;
