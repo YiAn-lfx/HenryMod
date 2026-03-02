@@ -1,16 +1,15 @@
 package HenryTGZJMod.cards.Skill;
 
+import HenryTGZJMod.actions.DoubleStanceAction;
 import HenryTGZJMod.actions.FocusAction;
 import HenryTGZJMod.cards.AbstractHenryCard;
 import HenryTGZJMod.helpers.ModHelper;
 import HenryTGZJMod.powers.DesperateGambitPower;
-import HenryTGZJMod.powers.StancePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 
 
 public class DesperateGambit extends AbstractHenryCard {
@@ -39,10 +38,10 @@ public class DesperateGambit extends AbstractHenryCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) { //卡牌使用效果
-        AbstractPower power = p.getPower("HenryTGZJMod:StancePower");
+
         this.addToBot(
                 new FocusAction(
-                    new ApplyPowerAction(p, p, new StancePower(p,power.amount)),
+                    new DoubleStanceAction(),
                     new ApplyPowerAction(p, p, new DesperateGambitPower(p))
                 )
         );
