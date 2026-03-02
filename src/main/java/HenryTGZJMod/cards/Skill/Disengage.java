@@ -22,7 +22,7 @@ public class Disengage extends AbstractHenryCard {
     private static final CardTarget TARGET = CardTarget.SELF; //指向类型
 
     public Disengage() {
-        super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
+        super(ID, false, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
         this.block = this.baseBlock = 5;
         this.stanceCost = baseStanceCost = 5;
         this.exhaust = false;

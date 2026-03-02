@@ -25,7 +25,7 @@ public class Backstab extends AbstractHenryCard {
 
 
     public Backstab() {
-        super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
+        super(ID, false, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
         this.damage = this.baseDamage = 12;
         this.magicNumber = this.baseMagicNumber = 3;
         this.exhaust = true;

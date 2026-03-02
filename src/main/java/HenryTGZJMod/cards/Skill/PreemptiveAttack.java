@@ -18,7 +18,7 @@ public class PreemptiveAttack extends AbstractHenryCard {
     private static final CardTarget TARGET = CardTarget.SELF; //指向类型
 
     public PreemptiveAttack() {
-        super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
+        super(ID, false, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
         this.exhaust = true;
         this.isEthereal = false;
         this.dontTriggerOnUseCard = false;

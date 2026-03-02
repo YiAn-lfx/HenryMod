@@ -22,7 +22,7 @@ public class MasterStrike extends AbstractHenryCard {
     private static final CardTarget TARGET = CardTarget.SELF; //指向类型
 
     public MasterStrike() {
-        super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
+        super(ID, false, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
         this.exhaust = true;
         this.isEthereal = false;
     }

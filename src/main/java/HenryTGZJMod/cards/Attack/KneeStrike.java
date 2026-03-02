@@ -20,7 +20,7 @@ public class KneeStrike extends AbstractHenryCard {
     private static final CardTarget TARGET = CardTarget.ENEMY; //指向类型
 
     public KneeStrike() {
-        super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
+        super(ID, false, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
         this.stanceCost = this.baseStanceCost = 3;
         this.tags.add(CardTags.STRIKE);
         this.exhaust = false;

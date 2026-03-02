@@ -21,7 +21,7 @@ public class DesperateGambit extends AbstractHenryCard {
     private static final CardTarget TARGET = CardTarget.SELF; //指向类型
 
     public DesperateGambit() {
-        super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
+        super(ID, false, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
         this.exhaust = true;
     }
 

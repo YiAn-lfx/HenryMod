@@ -20,7 +20,7 @@ public class Defensive extends AbstractHenryCard {
     private static final CardTarget TARGET = CardTarget.SELF; //指向类型
 
     public Defensive() {
-        super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
+        super(ID, false, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
         this.magicNumber = baseMagicNumber = 5;
         this.stanceCost = baseStanceCost = 2;
         this.exhaust = true;

@@ -25,7 +25,7 @@ public class Rossen extends AbstractHenryCard {
 
 
     public Rossen() {
-        super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
+        super(ID, false, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
         this.damage = this.baseDamage = 6;
         this.magicNumber = this.baseMagicNumber = 10;
         this.stanceCost = this.baseStanceCost = 3;

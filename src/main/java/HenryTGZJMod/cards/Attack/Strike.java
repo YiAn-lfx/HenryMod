@@ -41,7 +41,7 @@ public class Strike extends AbstractHenryCard {
     private static final CardTarget TARGET = CardTarget.ENEMY;
 
     public Strike(){
-        super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
+        super(ID, false, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
         this.damage = this.baseDamage = 6;
         this.tags.add(CardTags.STARTER_STRIKE);
         this.tags.add(CardTags.STRIKE);

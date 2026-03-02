@@ -21,7 +21,7 @@ public class Persuade extends AbstractHenryCard {
     private static final CardTarget TARGET = CardTarget.ENEMY; //指向类型
 
     public Persuade() {
-        super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
+        super(ID, false, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
         this.exhaust = true;
         this.isEthereal = false;
         this.dontTriggerOnUseCard = false;

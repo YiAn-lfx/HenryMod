@@ -23,7 +23,7 @@ public class Riposte extends AbstractHenryCard {
     private static final CardTarget TARGET = CardTarget.ENEMY; //指向类型
 
     public Riposte() {
-        super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
+        super(ID, false, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
         this.damage = this.baseDamage = 6;
         this.stanceCost = baseStanceCost = 3;
         this.exhaust = false;

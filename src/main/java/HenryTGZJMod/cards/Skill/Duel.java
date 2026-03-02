@@ -20,7 +20,7 @@ public class Duel extends AbstractHenryCard {
     private static final CardTarget TARGET = CardTarget.ALL; //指向类型
 
     public Duel() {
-        super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
+        super(ID, false, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
         this.magicNumber = this.baseMagicNumber = 3;
         this.exhaust = true;
         this.isEthereal = false;

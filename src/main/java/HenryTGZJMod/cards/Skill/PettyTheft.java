@@ -19,7 +19,7 @@ public class PettyTheft extends AbstractHenryCard {
     private static final CardTarget TARGET = CardTarget.ENEMY; //指向类型
 
     public PettyTheft() {
-        super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
+        super(ID, false, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
         this.magicNumber = baseMagicNumber = 20;
         this.exhaust = false;
         this.isEthereal = false;

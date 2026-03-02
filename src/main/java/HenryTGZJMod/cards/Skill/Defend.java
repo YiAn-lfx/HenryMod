@@ -34,7 +34,7 @@ public class Defend extends AbstractHenryCard {
     private static final CardTarget TARGET = CardTarget.SELF; //指向类型
 
     public Defend() {
-        super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
+        super(ID, false, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
         this.block = this.baseBlock = 5;
         this.tags.add(CardTags.STARTER_DEFEND);
     }
