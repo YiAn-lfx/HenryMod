@@ -75,8 +75,8 @@ public class Henry extends CustomPlayer {
                 CORPSE_IMAGE, // 人物死亡图像
                 this.getLoadout(),
                 0.0F, 0.0F,
-                200.0F, 220.0F, // 人物碰撞箱大小，越大的人物模型这个越大
-                new EnergyManager(3) // 初始每回合的能量
+                200.0F, 300.0F, // 人物碰撞箱大小，越大的人物模型这个越大
+                new EnergyManager(4) // 初始每回合的能量
         );
 
 
@@ -95,7 +95,7 @@ public class Henry extends CustomPlayer {
         for(int x = 0; x<4; x++) {
             retVal.add(Strike.ID);
         }
-        for(int x = 0; x<3; x++){
+        for(int x = 0; x<4; x++){
             retVal.add(Defend.ID);
         }
         retVal.add(OnGuard.ID);
