@@ -110,7 +110,9 @@ public class StealAction extends AbstractGameAction {
         for (int i = 0; i < loopCount; i++) {
             //江洋大盗判定
             AbstractPower powerM = stealer.getPower("HenryTGZJMod:MasterThiefPower");
-            addToBot(new ApplyPowerAction(stealer, stealer, new DexterityPower(stealer, powerM.amount)));
+            if (powerM != null ) {
+                addToBot(new ApplyPowerAction(stealer, stealer, new DexterityPower(stealer, powerM.amount)));
+            }
 
             if (!STEALABLE_POWERS.contains(powerId)) return;
 
@@ -132,8 +134,9 @@ public class StealAction extends AbstractGameAction {
         for (int i = 0; i < loopCount; i++) {
             //江洋大盗判定
             AbstractPower powerM = stealer.getPower("HenryTGZJMod:MasterThiefPower");
-            addToBot(new ApplyPowerAction(stealer, stealer, new DexterityPower(stealer, powerM.amount)));
-
+            if (powerM != null ) {
+                addToBot(new ApplyPowerAction(stealer, stealer, new DexterityPower(stealer, powerM.amount)));
+            }
             for (String pid : STEALABLE_POWERS) {
                 String actualId = getActualPowerId(pid);
                 AbstractPower power = target.getPower(actualId);
@@ -154,8 +157,9 @@ public class StealAction extends AbstractGameAction {
         for (int i = 0; i < loopCount; i++) {
             //江洋大盗判定
             AbstractPower powerM = stealer.getPower("HenryTGZJMod:MasterThiefPower");
-            addToBot(new ApplyPowerAction(stealer, stealer, new DexterityPower(stealer, powerM.amount)));
-
+            if (powerM != null ) {
+                addToBot(new ApplyPowerAction(stealer, stealer, new DexterityPower(stealer, powerM.amount)));
+            }
             List<String> available = new ArrayList<>();
             for (String pid : STEALABLE_POWERS) {
                 String actualId = getActualPowerId(pid);
@@ -183,7 +187,7 @@ public class StealAction extends AbstractGameAction {
             for (int i = 0; i < loopCount; i++) {
                 //江洋大盗判定
                 AbstractPower powerM = stealer.getPower("HenryTGZJMod:MasterThiefPower");
-                if (powerM != null) {
+                if (powerM != null ) {
                     addToBot(new ApplyPowerAction(stealer, stealer, new DexterityPower(stealer, powerM.amount)));
                 }
 
@@ -214,10 +218,9 @@ public class StealAction extends AbstractGameAction {
 
     private String getActualPowerId(String baseId) {
         if (baseId.equals("Intangible") || baseId.equals("IntangiblePlayer")) {
-            // 优先玩家版，再怪物版
             if (target.getPower("IntangiblePlayer") != null) return "IntangiblePlayer";
             if (target.getPower("Intangible") != null) return "Intangible";
-            return "Intangible"; // 默认
+            return "Intangible";
         }
         return baseId;
     }

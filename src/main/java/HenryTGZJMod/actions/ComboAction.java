@@ -45,7 +45,7 @@ public class ComboAction extends AbstractGameAction{
                 this.addToBot(new DamageAction(target, new DamageInfo(source, value, DamageInfo.DamageType.NORMAL), AttackEffect.SLASH_HORIZONTAL));
                 break;
             case BLOCK:
-                this.addToBot(new GainBlockAction(target, source, value));
+                this.addToBot(new GainBlockAction(source, source, value));
                 break;
             case NONE:
                 break;
