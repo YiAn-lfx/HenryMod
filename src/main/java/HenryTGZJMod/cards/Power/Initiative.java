@@ -19,7 +19,7 @@ public class Initiative extends AbstractHenryCard {
     private static final CardTarget TARGET = CardTarget.SELF; //指向类型
 
     public Initiative() {
-        super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
+        super(ID, false, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
     }
 
     @Override

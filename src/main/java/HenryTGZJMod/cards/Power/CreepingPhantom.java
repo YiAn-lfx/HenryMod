@@ -20,7 +20,7 @@ public class CreepingPhantom extends AbstractHenryCard {
 
 
     public CreepingPhantom() {
-        super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
+        super(ID, false, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
         this.magicNumber = this.baseMagicNumber = 2;
     }
 

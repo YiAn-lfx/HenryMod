@@ -21,7 +21,7 @@ public class HeroicVigour extends AbstractHenryCard {
 
 
     public HeroicVigour() {
-        super(ID, true, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
+        super(ID, false, CARD_STRINGS, COST, TYPE, RARITY, TARGET);
         this.magicNumber = this.baseMagicNumber;
     }
 
