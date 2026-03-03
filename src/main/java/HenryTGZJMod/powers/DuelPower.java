@@ -54,7 +54,8 @@ public class DuelPower extends AbstractHenryPower implements OnReceivePowerPower
     public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
         return abstractPower.type != PowerType.BUFF ||
                 abstractPower.ID.equals("HenryTGZJMod:FocusPower") ||
-                abstractPower.ID.equals("HenryTGZJMod:StancePower");
+                abstractPower.ID.equals("HenryTGZJMod:StancePower") ||
+                abstractPower.ID.equals("HenryTGZJMod:ReceiveDamagePower");
     }
 
 }
