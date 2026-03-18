@@ -2,6 +2,7 @@ package HenryTGZJMod.relics;
 
 import HenryTGZJMod.helpers.ModHelper;
 import HenryTGZJMod.ui.campfire.SharpenOption;
+import basemod.abstracts.CustomSavable;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -13,7 +14,7 @@ import com.megacrit.cardcrawl.ui.campfire.AbstractCampfireOption;
 
 import java.util.ArrayList;
 
-public class WeaponStatus extends AbstractHenryRelic {
+public class WeaponStatus extends AbstractHenryRelic implements CustomSavable<WeaponStatus.WeaponSaveData> {
     public static final String ID = ModHelper.makePath(WeaponStatus.class.getSimpleName()); // 遗物ID
     private static final RelicTier RELIC_TIER = RelicTier.STARTER; // 遗物类型
     private static final LandingSound LANDING_SOUND = LandingSound.FLAT; // 点击音效
@@ -95,7 +96,39 @@ public class WeaponStatus extends AbstractHenryRelic {
     }
 
 
+    @Override
+    public WeaponSaveData onSave() {
+        // 返回要保存的数据
+        return new WeaponSaveData(this.damageCounter, this.totalDamage);
+    }
 
+    @Override
+    public void onLoad(WeaponSaveData save) {
+        if (save != null) {
+            // 恢复保存的数据
+            this.damageCounter = save.damageCounter;
+            this.totalDamage = save.totalDamage;
+
+            // 重新计算相关值并更新描述
+            this.getReduceDamage();
+            this.updateDescription();
+        }
+    }
+
+    public static class WeaponSaveData {
+        public int damageCounter;
+        public int totalDamage;
+
+        // 必须有默认构造函数（用于反序列化）
+        public WeaponSaveData() {
+            this(0, 0);
+        }
+
+        public WeaponSaveData(int damageCounter, int totalDamage) {
+            this.damageCounter = damageCounter;
+            this.totalDamage = totalDamage;
+        }
+    }
 }
 
 

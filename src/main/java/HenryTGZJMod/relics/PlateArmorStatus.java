@@ -3,6 +3,7 @@ package HenryTGZJMod.relics;
 import HenryTGZJMod.helpers.ModHelper;
 import HenryTGZJMod.powers.ReceiveDamagePower;
 import HenryTGZJMod.ui.campfire.RepairOption;
+import basemod.abstracts.CustomSavable;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -15,7 +16,7 @@ import com.megacrit.cardcrawl.ui.campfire.AbstractCampfireOption;
 
 import java.util.ArrayList;
 
-public class PlateArmorStatus extends AbstractHenryRelic {
+public class PlateArmorStatus extends AbstractHenryRelic implements CustomSavable<PlateArmorStatus.PlateArmorSaveData> {
     public static final String ID = ModHelper.makePath(PlateArmorStatus.class.getSimpleName()); // 遗物ID
     private static final RelicTier RELIC_TIER = RelicTier.STARTER; // 遗物类型
     private static final LandingSound LANDING_SOUND = LandingSound.FLAT; // 点击音效
@@ -39,9 +40,9 @@ public class PlateArmorStatus extends AbstractHenryRelic {
     public String getUpdatedDescription() {
         getReduceDamage();
         if (reduceDamage >= 0) {
-            return this.DESCRIPTIONS[0] + reduceDamage + this.DESCRIPTIONS[2] + damageCounter + this.DESCRIPTIONS[3] + totalDamage + this.DESCRIPTIONS[4] + totalDamage;
+            return this.DESCRIPTIONS[0] + reduceDamage + this.DESCRIPTIONS[2] + damageCounter + this.DESCRIPTIONS[3] + totalDamage + this.DESCRIPTIONS[4] + unblockedTotalDamage;
         } else {
-            return this.DESCRIPTIONS[1] + -reduceDamage + this.DESCRIPTIONS[2] + damageCounter + this.DESCRIPTIONS[3] + totalDamage + this.DESCRIPTIONS[4] + totalDamage;
+            return this.DESCRIPTIONS[1] + -reduceDamage + this.DESCRIPTIONS[2] + damageCounter + this.DESCRIPTIONS[3] + totalDamage + this.DESCRIPTIONS[4] + unblockedTotalDamage;
         }
     }
     public void updateDescription() {
@@ -106,6 +107,44 @@ public class PlateArmorStatus extends AbstractHenryRelic {
 
     public void addCampfireOption(ArrayList<AbstractCampfireOption> options) {
         options.add(new RepairOption(this.counter < 120));
+    }
+
+    @Override
+    public PlateArmorSaveData onSave() {
+        return new PlateArmorSaveData(
+                this.damageCounter,
+                this.totalDamage,
+                this.unblockedTotalDamage
+        );
+    }
+
+    @Override
+    public void onLoad(PlateArmorSaveData save) {
+        if (save != null) {
+            this.damageCounter = save.damageCounter;
+            this.totalDamage = save.totalDamage;
+            this.unblockedTotalDamage = save.unblockedTotalDamage;
+
+            // 重新计算并更新
+            this.getReduceDamage();
+            this.updateDescription();
+        }
+    }
+
+    public static class PlateArmorSaveData {
+        public int damageCounter;
+        public int totalDamage;
+        public int unblockedTotalDamage;
+
+        public PlateArmorSaveData() {
+            this(0, 0, 0);
+        }
+
+        public PlateArmorSaveData(int damageCounter, int totalDamage, int unblockedTotalDamage) {
+            this.damageCounter = damageCounter;
+            this.totalDamage = totalDamage;
+            this.unblockedTotalDamage = unblockedTotalDamage;
+        }
     }
 
 }
